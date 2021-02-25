@@ -2,6 +2,10 @@
 
 while true
 
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+
 echo "Вставьте ключ АУ и сетевой кабель, если наберите OK для настройки или ничего для сброса скрипта"
 
 read START
@@ -17,12 +21,16 @@ if [ "$START" == "ОК" ] || [ "$START" == "OK" ]
 			do xe vm-shutdown uuid=$uuid
 			done
 
+		echo `printf "${GREEN}Done${NC}"`
+
 		echo "Добавление ключа в виртуальную машину"
 
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
 		xe pusb-param-set uuid=$USBkey passthrough-enable=true
 		xe vusb-create usb-group-uuid=$USBgroup vm-uuid=$uuid
+
+		echo `printf "${GREEN}Done${NC}"`
 
 		echo "Подключение LAN-портов напрямую в виртуальную машину"
 
@@ -42,7 +50,15 @@ if [ "$START" == "ОК" ] || [ "$START" == "OK" ]
 		PCIuuids=`cat tmp | sed 's/^/0\//' | tr -s '\n' ','| sed 's/.$//'`
 		xe vm-param-set other-config:pci=$PCIuuids uuid=$uuid
 		rm -f tmp
+
+		echo `printf "${GREEN}Done${NC}"`
+
+		echo "Автостарт виртуальной машины"
 		xe pool-param-set uuid=$uuid other-config:auto_poweron=true
+
+		echo `printf "${GREEN}Done${NC}"`
+
+
 	else
 		echo "Отмена операции"
 fi
