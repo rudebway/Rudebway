@@ -1,21 +1,21 @@
 #!/bin/bash
 
-while true
+while [ $RUN != "done"]
 do
 
 RED='\033[0;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 
-echo "Вставьте ключ АУ и сетевой кабель, если наберите OK для настройки или ничего для сброса скрипта"
+echo "п▓я│я┌п╟п╡я▄я┌п╣ п╨п╩я▌я┤ п░пё п╦ я│п╣я┌п╣п╡п╬п╧ п╨п╟п╠п╣п╩я▄, п╣я│п╩п╦ п╫п╟п╠п╣я─п╦я┌п╣ OK п╢п╩я▐ п╫п╟я│я┌я─п╬п╧п╨п╦ п╦п╩п╦ п╫п╦я┤п╣пЁп╬ п╢п╩я▐ я│п╠я─п╬я│п╟ я│п╨я─п╦п©я┌п╟"
 
 read START
 
-if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
+if [ "$START" == "п©б╥п©б═" ] || [ "$START" == "OK" ]
 	then
 		clear
 
-		echo "Выключение виртуальной машины"
+		echo "п▓я▀п╨п╩я▌я┤п╣п╫п╦п╣ п╡п╦я─я┌я┐п╟п╩я▄п╫п╬п╧ п╪п╟я┬п╦п╫я▀"
 
 		VMs=$(xe vm-list is-control-domain=false params=uuid --minimal | sed 's/,/ /g')
 		for uuid in $VMs
@@ -24,7 +24,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "Добавление ключа в виртуальную машину"
+		echo "п■п╬п╠п╟п╡п╩п╣п╫п╦п╣ п╨п╩я▌я┤п╟ п╡ п╡п╦я─я┌я┐п╟п╩я▄п╫я┐я▌ п╪п╟я┬п╦п╫я┐"
 
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
@@ -33,7 +33,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "Подключение LAN-портов напрямую в виртуальную машину"
+		echo "п÷п╬п╢п╨п╩я▌я┤п╣п╫п╦п╣ LAN-п©п╬я─я┌п╬п╡ п╫п╟п©я─я▐п╪я┐я▌ п╡ п╡п╦я─я┌я┐п╟п╩я▄п╫я┐я▌ п╪п╟я┬п╦п╫я┐"
 
 		RESULT1=$(lspci -mm | grep Ethernet | cut -c1-7 | sed 's/^/0000:/g' )
 		RESULT2=$(ethtool -i `ip addr | grep eth | grep "state UP" | cut -c4-7` | grep bus | cut -c11-22)
@@ -54,7 +54,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "Автостарт виртуальной машины"
+		echo "п░п╡я┌п╬я│я┌п╟я─я┌ п╡п╦я─я┌я┐п╟п╩я▄п╫п╬п╧ п╪п╟я┬п╦п╫я▀"
 
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
@@ -62,6 +62,6 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 
 	else
-		echo "Отмена операции"
+		echo "п·я┌п╪п╣п╫п╟ п╬п©п╣я─п╟я├п╦п╦"
 fi
 done
