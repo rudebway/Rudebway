@@ -1,7 +1,6 @@
 #!/bin/bash
 
-RUN=0
-while  RUN -lt 1
+while  true
 do
 
 RED='\033[0;31m'
@@ -60,10 +59,9 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
 		echo `printf "${GREEN}Done${NC}"`
-		RUN="done"
-		let RUN=1
+		break
 	else
 		echo "Отмена операции"
-		let RUN=1
+		break
 fi
 done
