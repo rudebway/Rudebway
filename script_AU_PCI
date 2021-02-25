@@ -28,7 +28,7 @@ if [ "$START" == "ОК" ] || [ "$START" == "OK" ]
 
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
-		xe pusb-param-set uuid=$USBkey passthrough-enable=true
+		xe pusb-param-set uuid=$USBkey passthrough-enabled=true
 		xe vusb-create usb-group-uuid=$USBgroup vm-uuid=$uuid
 
 		echo `printf "${GREEN}Done${NC}"`
@@ -55,7 +55,7 @@ if [ "$START" == "ОК" ] || [ "$START" == "OK" ]
 		echo `printf "${GREEN}Done${NC}"`
 
 		echo "Автостарт виртуальной машины"
-		xe pool-param-set uuid=$uuid other-config:auto_poweron=true
+		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
 		echo `printf "${GREEN}Done${NC}"`
 
