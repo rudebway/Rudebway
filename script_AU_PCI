@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while [ $RUN != "done" ]
+while [ "$RUN" != "done" ]
 do
 
 RED='\033[0;31m'
@@ -11,7 +11,7 @@ echo "Вставьте ключ АУ и сетевой кабель, если н
 
 read START
 
-if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
+if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 	then
 		clear
 
@@ -59,7 +59,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
 		echo `printf "${GREEN}Done${NC}"`
-
+		RUN="done"
 
 	else
 		echo "Отмена операции"
