@@ -15,7 +15,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 	then
 		clear
 
-		echo "\nВыключение виртуальной машины"
+		echo "Выключение виртуальной машины"
 
 		VMs=$(xe vm-list is-control-domain=false params=uuid --minimal | sed 's/,/ /g')
 		for uuid in $VMs
@@ -24,7 +24,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "\nДобавление ключа в виртуальную машину"
+		echo "Добавление ключа в виртуальную машину"
 
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
@@ -33,7 +33,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "\nПодключение LAN-портов напрямую в виртуальную машину"
+		echo "Подключение LAN-портов напрямую в виртуальную машину"
 
 		RESULT1=$(lspci -mm | grep Ethernet | cut -c1-7 | sed 's/^/0000:/g' )
 		RESULT2=$(ethtool -i `ip addr | grep eth | grep "state UP" | cut -c4-7` | grep bus | cut -c11-22)
@@ -53,17 +53,17 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "\nАвтостарт виртуальной машины"
+		echo "Автостарт виртуальной машины"
 
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
 		echo `printf "${GREEN}Done${NC}"`
-		echo "\nТеперь необходимо перезагрузить сервер для вступления изменений в работу"
+		echo "Теперь необходимо перезагрузить сервер для вступления изменений в работу"
 
 		unset RESULT RESULT1 RESULT2 RESULT3 PCIhide PCIuuids uuid USBkey VMs
 		break
 	else
-		echo "\nОтмена операции"
+		echo "Отмена операции"
 		break
 fi
 done
