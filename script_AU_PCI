@@ -7,7 +7,7 @@ RED='\033[0;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
 
-echo "п▓я│я┌п╟п╡я▄я┌п╣ п╨п╩я▌я┤ п░пё п╦ я│п╣я┌п╣п╡п╬п╧ п╨п╟п╠п╣п╩я▄, п╣я│п╩п╦ п╫п╟п╠п╣я─п╦я┌п╣ OK п╢п╩я▐ п╫п╟я│я┌я─п╬п╧п╨п╦ п╦п╩п╦ п╫п╦я┤п╣пЁп╬ п╢п╩я▐ я│п╠я─п╬я│п╟ я│п╨я─п╦п©я┌п╟"
+echo "Вставьте ключ АУ и сетевой кабель, если наберите OK для настройки или ничего для сброса скрипта"
 
 read START
 
@@ -15,7 +15,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 	then
 		clear
 
-		echo "п▓я▀п╨п╩я▌я┤п╣п╫п╦п╣ п╡п╦я─я┌я┐п╟п╩я▄п╫п╬п╧ п╪п╟я┬п╦п╫я▀"
+		echo "Выключение виртуальной машины"
 
 		VMs=$(xe vm-list is-control-domain=false params=uuid --minimal | sed 's/,/ /g')
 		for uuid in $VMs
@@ -24,7 +24,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "п■п╬п╠п╟п╡п╩п╣п╫п╦п╣ п╨п╩я▌я┤п╟ п╡ п╡п╦я─я┌я┐п╟п╩я▄п╫я┐я▌ п╪п╟я┬п╦п╫я┐"
+		echo "Добавление ключа в виртуальную машину"
 
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
@@ -33,7 +33,7 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "п÷п╬п╢п╨п╩я▌я┤п╣п╫п╦п╣ LAN-п©п╬я─я┌п╬п╡ п╫п╟п©я─я▐п╪я┐я▌ п╡ п╡п╦я─я┌я┐п╟п╩я▄п╫я┐я▌ п╪п╟я┬п╦п╫я┐"
+		echo "Подключение LAN-портов напрямую в виртуальную машину"
 
 		RESULT1=$(lspci -mm | grep Ethernet | cut -c1-7 | sed 's/^/0000:/g' )
 		RESULT2=$(ethtool -i `ip addr | grep eth | grep "state UP" | cut -c4-7` | grep bus | cut -c11-22)
@@ -54,13 +54,14 @@ if [ "$START" == "п·п " ] || [ "$START" == "OK" ]
 
 		echo `printf "${GREEN}Done${NC}"`
 
-		echo "п░п╡я┌п╬я│я┌п╟я─я┌ п╡п╦я─я┌я┐п╟п╩я▄п╫п╬п╧ п╪п╟я┬п╦п╫я▀"
+		echo "Автостарт виртуальной машины"
+
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
 
 		echo `printf "${GREEN}Done${NC}"`
 
 
 	else
-		echo "п·я┌п╪п╣п╫п╟ п╬п©п╣я─п╟я├п╦п╦"
+		echo "Отмена операции"
 fi
 done
