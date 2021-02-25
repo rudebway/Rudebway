@@ -1,6 +1,7 @@
 #!/bin/bash
 
 while true
+do
 
 RED='\033[0;31m'
 GREEN='\033[1;32m'
@@ -62,3 +63,4 @@ if [ "$START" == "ОК" ] || [ "$START" == "OK" ]
 	else
 		echo "Отмена операции"
 fi
+done
