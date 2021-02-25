@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while [ $RUN != "done"]
+while [ $RUN != "done" ]
 do
 
 RED='\033[0;31m'
