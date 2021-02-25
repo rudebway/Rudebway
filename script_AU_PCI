@@ -6,35 +6,35 @@ do
 RED='\033[0;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
-
+printf "\n"
 echo "Вставьте ключ АУ и сетевой кабель, если наберите OK для настройки или ничего для сброса скрипта"
-
+printf "\n"
 read START
 
 if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 	then
 		clear
-
+		printf "\n"
 		echo "Выключение виртуальной машины"
-
+		printf "\n"
 		VMs=$(xe vm-list is-control-domain=false params=uuid --minimal | sed 's/,/ /g')
 		for uuid in $VMs
 			do xe vm-shutdown uuid=$uuid
 			done
-
+		printf "\n"
 		echo `printf "${GREEN}Done${NC}"`
-
+		printf "\n"
 		echo "Добавление ключа в виртуальную машину"
-
+		printf "\n"
 		USBkey=`xe pusb-list vendor-desc=Aktiv params=uuid --minimal | sed 's/,/ /g'`
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
 		xe pusb-param-set uuid=$USBkey passthrough-enabled=true
 		xe vusb-create usb-group-uuid=$USBgroup vm-uuid=$uuid
-
+		printf "\n"
 		echo `printf "${GREEN}Done${NC}"`
-
+		printf "\n"
 		echo "Подключение LAN-портов напрямую в виртуальную машину"
-
+		printf "\n"
 		RESULT1=$(lspci -mm | grep Ethernet | cut -c1-7 | sed 's/^/0000:/g' )
 		RESULT2=$(ethtool -i `ip addr | grep eth | grep "state UP" | cut -c4-7` | grep bus | cut -c11-22)
 		for var in $RESULT1
@@ -50,20 +50,23 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 		/opt/xensource/libexec/xen-cmdline --set-dom0 "xen-pciback.hide=$PCIhide"
 		PCIuuids=`cat tmp | sed 's/^/0\//' | tr -s '\n' ','| sed 's/.$//'`
 		xe vm-param-set other-config:pci=$PCIuuids uuid=$uuid
-
+		printf "\n"
 		echo `printf "${GREEN}Done${NC}"`
-
+		printf "\n"
 		echo "Автостарт виртуальной машины"
-
+		printf "\n"
 		xe vm-param-set uuid=$uuid other-config:auto_poweron=true
-
+		printf "\n"
 		echo `printf "${GREEN}Done${NC}"`
+		printf "\n"
 		echo "Теперь необходимо перезагрузить сервер для вступления изменений в работу"
-
+		printf "\n"
 		unset RESULT RESULT1 RESULT2 RESULT3 PCIhide PCIuuids uuid USBkey VMs
 		break
 	else
+		printf "\n"
 		echo "Отмена операции"
+		printf "\n"
 		break
 fi
 done
