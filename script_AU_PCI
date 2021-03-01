@@ -62,6 +62,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 		echo "Теперь необходимо перезагрузить сервер для вступления изменений в работу"
 		printf "\n"
 		unset RESULT RESULT1 RESULT2 RESULT3 PCIhide PCIuuids uuid USBkey VMs
+		rm -f tmp
 		break
 	else
 		printf "\n"
