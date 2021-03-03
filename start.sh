@@ -15,23 +15,22 @@ read KEY
 
 case $KEY in
   1)bash ./script_import
+    sleep 5
     clear
     echo "Установка Виртуальных машин"
     printf "\n"
     echo `printf "${GREEN}Done${NC}"`
     printf "\n"
-    sleep 3
-  break ;;
+    sleep 3 ;;
   2)bash ./script_AU_PCI
+    sleep 5
     clear
     echo "Настройка Виртуальных машин"
     printf "\n"
     echo `printf "${GREEN}Done${NC}"`
     printf "\n"
-    sleep 3
-  break ;;
+    sleep 3 ;;
   3) clear
     echo "Выход"
-    sleep 3
-  break ;;
+    sleep 3;;
 esac
