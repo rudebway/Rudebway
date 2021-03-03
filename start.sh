@@ -1,5 +1,6 @@
 #!/bin/bash
-
+while true
+do
 clear
 RED='\033[0;31m'
 GREEN='\033[1;32m'
@@ -32,5 +33,7 @@ case $KEY in
     sleep 3 ;;
   3) clear
     echo "Выход"
-    sleep 3;;
+    sleep 3
+    break;;
 esac
+done
