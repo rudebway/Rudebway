@@ -30,7 +30,5 @@ case $KEY in
       echo `printf "${GREEN}Импорт успешен${NC}"`
       printf "\n"
     sleep 3;;
-  3)clear
-    echo "Возврат в предыдущее меню"
-    sleep 2;;
+  3)clear;;
 esac

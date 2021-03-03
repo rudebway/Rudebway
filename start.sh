@@ -17,24 +17,24 @@ read KEY
 
 case $KEY in
   1)bash ./script_import
-    sleep 2
+    sleep 1
     clear
     echo "Установка Виртуальных машин"
     printf "\n"
     echo `printf "${GREEN}Done${NC}"`
     printf "\n"
-    sleep 2 ;;
+    sleep 1 ;;
   2)bash ./script_AU_PCI
-    sleep 2
+    sleep 1
     clear
     echo "Настройка Виртуальных машин"
     printf "\n"
     echo `printf "${GREEN}Done${NC}"`
     printf "\n"
-    sleep 2 ;;
+    sleep 1 ;;
   3) clear
     echo "Выход"
-    sleep 2
+    sleep 1
     break;;
 esac
 done
