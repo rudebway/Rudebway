@@ -5,11 +5,11 @@ GREEN='\033[1;32m'
 NC='\033[0m'
 DISKname=`xe sr-list type=ext --minimal`
 cd /VM
-printf 'Выберите Виртуальные машины для установки \n \n'
+printf 'Select VM for importing to the server \n \n'
 printf '1) Windows 10 \n'
 printf '2) Windows 10 + RoadAR \n'
 printf '\n'
-printf '3) Назад \n \n'
+printf '3)Previous menu  \n \n'
 
 read KEY
 
@@ -18,7 +18,7 @@ case $KEY in
     xe vm-import filename=$OSname  sr-uuid=$DISKname
       clear
       printf "\n"
-      echo `printf "${GREEN}Импорт успешен${NC}"`
+      echo `printf "${GREEN}Import successed${NC}"`
       printf "\n"
     sleep 3;;
   2)OSname="WT10.vxa"
@@ -27,9 +27,9 @@ case $KEY in
     xe vm-import filename=$OSname  sr-uuid=$DISKname
       clear
       printf "\n"
-      echo `printf "${GREEN}Импорт успешен${NC}"`
+      echo `printf "${GREEN}Import successed${NC}"`
       printf "\n"
     sleep 3;;
   3)clear
-    echo "Возврат в предыдущее меню";;
+    echo "Back to previous menu";;
 esac
