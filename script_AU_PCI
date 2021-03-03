@@ -66,6 +66,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 		rm -f tmp
 		break
 	else
+		clear
 		printf "\n"
 		echo "Отмена операции"
 		printf "\n"
