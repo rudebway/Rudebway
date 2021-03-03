@@ -18,8 +18,7 @@ case $KEY in
       printf "\n"
       echo `printf "${GREEN}Done${NC}"`
       printf "\n"
-    sleep 3
-    break ;;
+    sleep 3;;
   2)OSname="WT10.vxa"
     xe vm-import filename=$OSname  sr-uuid=$DISKname
     OSname="RoadAR.vxa"
@@ -27,9 +26,7 @@ case $KEY in
       printf "\n"
       echo `printf "${GREEN}Done${NC}"`
       printf "\n"
-    sleep 3
-    break ;;
-    3) echo "Возврат в предыдущее меню"
-    sleep 2
-    break ;;
+    sleep 3;;
+  3) echo "Возврат в предыдущее меню"
+    sleep 2;;
 esac
