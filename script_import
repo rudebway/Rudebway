@@ -13,34 +13,23 @@ printf '3) Назад \n'
 read KEY
 
 case $KEY in
-1)OSname="WT10.vxa"
-xe vm-import filename=$OSname  sr-uuid=$DISKname
-printf "\n"
-echo `printf "${GREEN}Done${NC}"`
-printf "\n"
-sleep 3
-break ;;
-2)OSname="WT10.vxa"
-xe vm-import filename=$OSname  sr-uuid=$DISKname
-OSname="RoadAR.vxa"
-xe vm-import filename=$OSname  sr-uuid=$DISKname
-printf "\n"
-echo `printf "${GREEN}Done${NC}"`
-printf "\n"
-sleep 3
-break ;;
-3) echo "Возврат в предыдущее меню"
-sleep 2
-break ;;
+  1)OSname="WT10.vxa"
+    xe vm-import filename=$OSname  sr-uuid=$DISKname
+      printf "\n"
+      echo `printf "${GREEN}Done${NC}"`
+      printf "\n"
+    sleep 3
+    break ;;
+  2)OSname="WT10.vxa"
+    xe vm-import filename=$OSname  sr-uuid=$DISKname
+    OSname="RoadAR.vxa"
+    xe vm-import filename=$OSname  sr-uuid=$DISKname
+      printf "\n"
+      echo `printf "${GREEN}Done${NC}"`
+      printf "\n"
+    sleep 3
+    break ;;
+    3) echo "Возврат в предыдущее меню"
+    sleep 2
+    break ;;
 esac
-
-
-
-
-
-#определение локального диска
-xe sr-list type=ext
-
-
-#импотрирование виртуальной машины
-xe vm-import filename=$OSname  sr-uuid=$DISKname
