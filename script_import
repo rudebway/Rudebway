@@ -1,0 +1,46 @@
+#/bin/bash
+clear
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+NC='\033[0m'
+DISKname=`xe sr-list type=ext --minimal`
+cd /VM
+printf 'Выберите Виртуальные машины для установки \n \n'
+printf '1) Windows 10 \n'
+printf '2) Windows 10 + RoadAR \n'
+printf '\n'
+printf '3) Назад \n'
+read KEY
+
+case $KEY in
+1)OSname="WT10.vxa"
+xe vm-import filename=$OSname  sr-uuid=$DISKname
+printf "\n"
+echo `printf "${GREEN}Done${NC}"`
+printf "\n"
+sleep 3
+break ;;
+2)OSname="WT10.vxa"
+xe vm-import filename=$OSname  sr-uuid=$DISKname
+OSname="RoadAR.vxa"
+xe vm-import filename=$OSname  sr-uuid=$DISKname
+printf "\n"
+echo `printf "${GREEN}Done${NC}"`
+printf "\n"
+sleep 3
+break ;;
+3) echo "Возврат в предыдущее меню"
+sleep 2
+break ;;
+esac
+
+
+
+
+
+#определение локального диска
+xe sr-list type=ext
+
+
+#импотрирование виртуальной машины
+xe vm-import filename=$OSname  sr-uuid=$DISKname

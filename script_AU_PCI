@@ -30,6 +30,7 @@ if [ "$START" == "ОК " ] || [ "$START" == "OK" ]
 		USBgroup=`xe pusb-list vendor-desc=Aktiv params=usb-group-uuid --minimal | sed 's/,/ /g'`
 		xe pusb-param-set uuid=$USBkey passthrough-enabled=true
 		xe vusb-create usb-group-uuid=$USBgroup vm-uuid=$uuid
+		cp -rf usb_reset.py /opt/xensource/libexec/usb_reset.py
 		printf "\n"
 		echo `printf "${GREEN}Done${NC}"`
 		printf "\n"
