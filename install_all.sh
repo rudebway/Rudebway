@@ -30,3 +30,5 @@ cd ~
 sudo git clone https://github.com/rudebway/Rudebway.git
 cp /Rudebway/ATOM/* ~
 rm -rf ~/Rudebway/
+chmod +x ATOM.sh
+chmod +x ~NGN/*
