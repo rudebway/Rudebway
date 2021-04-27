@@ -25,7 +25,7 @@ mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv
 echo "mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv " /etc/network/mcifs.ch
 chmod +x /etc/network/mcifs.ch
 cp -R /serv/ATOM/uuu-korda ~/uuu-korda
-#cp /serv/ATOM/firmwares/* ~/uuu-korda & progress -mp $!
+cp /serv/ATOM/firmwares/* ~/uuu-korda & progress -mp $!
 cd ~
 sudo git clone https://github.com/rudebway/Rudebway.git
 cp /Rudebway/ATOM/* ~
