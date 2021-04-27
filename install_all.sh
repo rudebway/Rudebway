@@ -28,7 +28,8 @@ cp -R /serv/ATOM/uuu-korda ~/uuu-korda
 cp /serv/ATOM/firmwares/* ~/uuu-korda & progress -mp $!
 cd ~
 sudo git clone https://github.com/rudebway/Rudebway.git
-cp /Rudebway/ATOM/* ~
+cp -r ~/Rudebway/ATOM/* ~
 rm -rf ~/Rudebway/
 chmod +x ATOM.sh
-chmod +x ~NGN/*
+chmod +x update.sh
+chmod +x ~/NGN/*

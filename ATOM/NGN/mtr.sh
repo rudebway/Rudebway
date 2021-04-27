@@ -11,13 +11,25 @@ CMD2MTR=$(cat $TMPMTR)
 if [ $? -eq "0" ]; then
     case $CMD2MTR in
     "1")
-        ~/flasher/flashBootloader.sh && ~/NGN/mtr.sh
+        cd ~/flasher/
+        ./flashBootloader.sh
+        cd ~/NGN/
+        ./mtr.sh
+        read -s -n 1
         ;;
     "2")
-        ~/flasher/flashFW.sh && ~/NGN/mtr.sh
+        cd ~/flasher/
+        ./flashFW.sh
+        cd ~/NGN/
+        ./mtr.sh
+        read -s -n 1
         ;;
     "3")
-        ~/flasher/testBoard.sh && ~/NGN/mtr.sh
+        cd ~/flasher/
+        ./testBoard.sh
+        cd ~/NGN/
+        ./mtr.sh
+        read -s -n 1
         ;;
     "4") ;;
 
