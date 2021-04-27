@@ -1,7 +1,7 @@
 #!/bin/bash
 TMPFCMD="/tmp/cmd.tmp"
 dialog --title "Работа с АТОМом" \
-    --backtitle "АТОМ (KORDA-GROUP)" \
+    --backtitle "АТОМ $IPDFI" \
     --menu "Выберите необходимый тип работ" 15 40 9 \
     1 "Прошивка моторизации" \
     2 "Прошивка БКП" \
