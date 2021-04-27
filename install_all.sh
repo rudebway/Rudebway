@@ -22,7 +22,7 @@ systemctl restart sshd
 cd ~
 mkdir /serv
 mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv
-echo "mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv " /etc/network/mcifs.ch
+echo "mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv " | cat > /etc/network/mcifs.ch
 chmod +x /etc/network/mcifs.ch
 cp -R /serv/ATOM/uuu-korda ~/uuu-korda
 cp /serv/ATOM/firmwares/* ~/uuu-korda & progress -mp $!
