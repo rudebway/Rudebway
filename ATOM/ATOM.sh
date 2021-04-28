@@ -8,7 +8,8 @@ dialog --title "Работа с АТОМом" \
     3 "Настройка DFI" \
     4 "Подключение к БКП(БСИ)" \
     5 "Типовые решения" \
-    6 "Выход" 2>$TMPFCMD
+    6 "Обновления" \
+    7 "Выход" 2>$TMPFCMD
 CMD2RUN=$(cat $TMPFCMD)
 if [ $? -eq "0" ]; then
     case $CMD2RUN in
@@ -24,10 +25,14 @@ if [ $? -eq "0" ]; then
     "4")
         picocom -b 115200 /dev/ttyUSB0 && ./ATOM.sh
         ;;
-    "5") 
+    "5")
         cd NGN && ./tbl.sh && cd .. && ./ATOM.sh
         ;;
-    "6")
+    "6") 
+        cd NGN && ./upd.sh && cd .. && ./ATOM.sh
+        ;;
+
+    "7")
         exit
         ;;
     esac
