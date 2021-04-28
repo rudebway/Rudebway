@@ -6,7 +6,7 @@ dialog --title "Типовые решения проблем" \
     --menu "Выберите возникшую проблему" 15 40 9 \
     1 "Нет камер в веб-интерфейсе" \
     2 "Ошибка GPS (host/port)" \
-    3 "Запуск FtDetect" \
+    3 "Проблемы с моторизацией/GPS" \
     4 "Назад" 2>$TMPTBL
 CMD2TBL=$(cat $TMPTBL)
 if [ $? -eq "0" ]; then
@@ -20,7 +20,9 @@ if [ $? -eq "0" ]; then
         ./tbl.sh
         ;;
     "3")
-        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S sudo FtDetect'
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/ublox'
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans'
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect'
         ;;
     "4") ;;
 
