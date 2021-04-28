@@ -13,7 +13,7 @@ CMD2LIC=$(cat $TMPLIC)
 if [ $? -eq "0" ]; then
     case $CMD2LIC in
     "1")
-        sshpass -p 'Fx566434' ssh admin@$IPDFI "license_cheker3" | tee /tmp/lic.tmp
+        sshpass -p 'Fx566434' ssh admin@$IPDFI "license_checker3" | tee /tmp/lic.tmp
         read -s -n 1
         #LIC=$(cat /tmp/lic.tmp)
         #dialog --title "Файл запроса лицензии" \
