@@ -1,4 +1,5 @@
 #!/bin/bash
+IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPFCMD="/tmp/cmd.tmp"
 dialog --title "Работа с АТОМом" \
     --backtitle "АТОМ $IPDFI" \
