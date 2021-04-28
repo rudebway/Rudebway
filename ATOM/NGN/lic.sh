@@ -1,4 +1,5 @@
 #!/bin/bash
+IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPLIC="/tmp/fcmd.tmp"
 dialog --title "Работа с лицензиями" \
     --backtitle "АТОМ $IPDFI" \
