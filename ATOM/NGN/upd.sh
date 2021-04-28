@@ -22,10 +22,6 @@ if [ $? -eq "0" ]; then
         ./upd.sh
         ;;
     "2")
-       # VERALV=$(ls )
-       # if []
-#
-        #./upd.sh
         ;;
     "3")
         ;;
