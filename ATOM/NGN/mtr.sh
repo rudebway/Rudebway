@@ -11,25 +11,31 @@ CMD2MTR=$(cat $TMPMTR)
 if [ $? -eq "0" ]; then
     case $CMD2MTR in
     "1")
+        clear
         cd ~/flasher/
         ./flashBootloader.sh
+        echo "Press any key"
+        read -s -n 1
         cd ~/NGN/
         ./mtr.sh
-        read -s -n 1
         ;;
     "2")
+        clear
         cd ~/flasher/
         ./flashFW.sh
+        echo "Press any key"
+        read -s -n 1
         cd ~/NGN/
         ./mtr.sh
-        read -s -n 1
         ;;
     "3")
+        clear
         cd ~/flasher/
         ./testBoard.sh
+        echo "Press any key"
+        read -s -n 1
         cd ~/NGN/
         ./mtr.sh
-        read -s -n 1
         ;;
     "4") ;;
 
