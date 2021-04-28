@@ -21,12 +21,12 @@ if [ $? -eq "0" ]; then
         ;;
     "2")
         IPDFI=$(cat /tmp/ipdfi.tmp)
-        timeout 3s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 115200 /dev/ttyS0'
+        timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 115200 /dev/ttyS0'
         ./clb.sh
         ;;
     "3")
         IPDFI=$(cat /tmp/ipdfi.tmp)
-        timeout 3s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 9600 /dev/ublox'
+        timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 9600 /dev/ublox'
         ./clb.sh
         ;;
     "4")
