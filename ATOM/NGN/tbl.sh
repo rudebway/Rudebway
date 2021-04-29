@@ -27,6 +27,8 @@ if [ $? -eq "0" ]; then
         ;;
 
     "4")
+        ssh-keygen -f "/root/.ssh/known_hosts" -R 192.168.100.100
+        ssh-keyscan -H 192.168.100.100 >>/root/.ssh/known_hosts
         cat ~/NGN/sim.sh | sshpass -p 'Fx566434' ssh user@192.168.100.100 /bin/bash
         ;;
     "5") ;;
