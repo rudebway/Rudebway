@@ -22,6 +22,20 @@ if [ $? -eq "0" ]; then
         ./upd.sh
         ;;
     "2")
+        if [ $(curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37)  =  $(ls ~/uuu-korda/ | grep qspi- | cut -c22-28)]; then
+            dialog --title "Проверка обновлений" \
+            --msgbox "\n Обновление не требуется" 7 50
+        else
+            cd ~/uuu-korda/
+            mkdir old.firmware
+            mv $(ls ~/uuu-korda/ | grep openwrt) ~/uuu-korda/old.firmware
+            wget -r --no-parent http://10.78.1.67/Alvarado/
+            mkdir web.firmware
+            mv $(ls ~/uuu-korda/ | grep sysup) ~/uuu-korda/web.firmware
+            dialog --title "Проверка обновлений" \
+            --msgbox "\n Обновление завершено" 7 50
+        fi
+        ./upd.sh
         ;;
     "3")
         ;;
@@ -29,3 +43,9 @@ if [ $? -eq "0" ]; then
     esac
 fi
 rm -f $TMPUPD
+
+
+
+
+
+curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37
