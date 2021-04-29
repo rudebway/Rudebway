@@ -7,7 +7,8 @@ dialog --title "Типовые решения проблем" \
     1 "Нет камер в веб-интерфейсе" \
     2 "Ошибка GPS (host/port)" \
     3 "Проблемы с моторизацией/GPS" \
-    4 "Назад" 2>$TMPTBL
+    4 "Проверка доступности SIM" \
+    5 "Назад" 2>$TMPTBL
 CMD2TBL=$(cat $TMPTBL)
 if [ $? -eq "0" ]; then
     case $CMD2TBL in
@@ -24,7 +25,11 @@ if [ $? -eq "0" ]; then
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans'
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect'
         ;;
-    "4") ;;
+
+    "4")
+        sshpass -p 'Fx566434' ssh user@192.168.100.100 "bash -s" < ~/NGN/sim.sh
+        ;;
+    "5") ;;
 
     esac
 fi
