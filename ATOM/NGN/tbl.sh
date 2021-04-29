@@ -27,9 +27,11 @@ if [ $? -eq "0" ]; then
         ;;
 
     "4")
+        sudo ip addr add 192.168.100.128/24 dev enp2s0
         ssh-keygen -f "/root/.ssh/known_hosts" -R 192.168.100.100
         ssh-keyscan -H 192.168.100.100 >>/root/.ssh/known_hosts
-        cat ~/NGN/sim.sh | sshpass -p 'Fx566434' ssh user@192.168.100.100 /bin/bash
+        cat ~/NGN/sim.sh | sshpass -p 'Fx566434' ssh user@192.168.100.100 'sudo /bin/bash'
+        read -s -n 1
         ;;
     "5") ;;
 
