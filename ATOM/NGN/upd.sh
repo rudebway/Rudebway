@@ -34,6 +34,7 @@ if [ $? -eq "0" ]; then
             mv ~/uuu-korda/10.78.1.67/Alvarado/* ~/uuu-korda/
             mkdir web.firmware
             mv $(ls ~/uuu-korda/ | grep sysup) ~/uuu-korda/web.firmware
+            rm -rf ~/uuu-korda/10.78.1.67/
             dialog --title "Проверка обновлений" \
             --msgbox "\n Обновление завершено" 7 50
         fi
