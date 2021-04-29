@@ -30,6 +30,8 @@ if [ $? -eq "0" ]; then
             mkdir old.firmware
             mv $(ls ~/uuu-korda/ | grep openwrt) ~/uuu-korda/old.firmware
             wget -r --no-parent http://10.78.1.67/Alvarado/
+            rm ~/uuu-korda/10.78.1.67/Alvarado/index.html
+            mv ~/uuu-korda/10.78.1.67/Alvarado/* ~/uuu-korda/
             mkdir web.firmware
             mv $(ls ~/uuu-korda/ | grep sysup) ~/uuu-korda/web.firmware
             dialog --title "Проверка обновлений" \
