@@ -27,7 +27,7 @@ if [ $? -eq "0" ]; then
         ;;
 
     "4")
-        sshpass -p 'Fx566434' ssh user@192.168.100.100 "bash -s" < ~/NGN/sim.sh
+        cat ~/NGN/sim.sh | sshpass -p 'Fx566434' ssh user@192.168.100.100 /bin/bash
         ;;
     "5") ;;
 
