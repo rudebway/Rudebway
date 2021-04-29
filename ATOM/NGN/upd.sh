@@ -22,9 +22,9 @@ if [ $? -eq "0" ]; then
         ./upd.sh
         ;;
     "2")
-        if [ $(curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37)  =  $(ls ~/uuu-korda/ | grep qspi- | cut -c22-28)]; then
+        if [ $(curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37) = $(ls ~/uuu-korda/ | grep qspi- | cut -c22-28)]; then
             dialog --title "Проверка обновлений" \
-            --msgbox "\n Обновление не требуется" 7 50
+                --msgbox "\n Обновление не требуется" 7 50
         else
             cd ~/uuu-korda/
             mkdir old.firmware
@@ -36,19 +36,15 @@ if [ $? -eq "0" ]; then
             mv $(ls ~/uuu-korda/ | grep sysup) ~/uuu-korda/web.firmware
             rm -rf ~/uuu-korda/10.78.1.67/
             dialog --title "Проверка обновлений" \
-            --msgbox "\n Обновление завершено" 7 50
+                --msgbox "\n Обновление завершено" 7 50
         fi
         ./upd.sh
         ;;
-    "3")
-        ;;
+    "3") ;;
 
     esac
+
 fi
 rm -f $TMPUPD
-
-
-
-
 
 curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37
