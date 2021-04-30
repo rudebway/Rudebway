@@ -21,6 +21,7 @@ if [ $? -eq "0" ]; then
         cd ~/NGN/
         ./upd.sh
         ;;
+        
     "2")
         if [ $(curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37) = $(ls ~/uuu-korda/ | grep qspi- | cut -c22-28) ]; then
             dialog --title "Проверка обновлений" \
