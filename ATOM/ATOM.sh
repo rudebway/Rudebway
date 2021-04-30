@@ -1,5 +1,5 @@
 #!/bin/bash
-# (c) 418-scripts 
+# (c) 418
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPFCMD="/tmp/cmd.tmp"
 dialog --title "Работа с АТОМом" \
