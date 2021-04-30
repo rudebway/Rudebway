@@ -2,13 +2,13 @@
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPDFI="/tmp/cmddfi.tmp"
 dialog --title "Работа с DFI" \
-    --backtitle "АТОМ $IPDFI" \
-    --menu "Выберите необходимый тип работ" 15 40 9 \
-    1 "Соединение с DFI" \
-    2 "Установка CORTES" \
-    3 "Лицензия" \
-    4 "Настройки и тесты" \
-    5 "Назад" 2>$TMPDFI
+--backtitle "АТОМ $IPDFI" \
+--menu "Выберите необходимый тип работ" 15 40 9 \
+1 "Соединение с DFI" \
+2 "Установка CORTES" \
+3 "Лицензия" \
+4 "Настройки и тесты" \
+5 "Назад" 2>$TMPDFI
 CMD2DFI=$(cat $TMPDFI)
 if [ $? -eq "0" ]; then
     case $CMD2DFI in
@@ -33,9 +33,9 @@ if [ $? -eq "0" ]; then
     "4")
         ./clb.sh && ./dfi.sh
         ;;
-    "5")
-    ;;
+    "5") ;;
 
     esac
+
 fi
 rm -f $TMPDFI
