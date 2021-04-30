@@ -33,7 +33,8 @@ if [ $? -eq "0" ]; then
     "4")
         ./clb.sh && ./dfi.sh
         ;;
-    "5") ;;
+    "5")
+    ;;
 
     esac
 fi
