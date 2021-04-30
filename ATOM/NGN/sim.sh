@@ -1,4 +1,5 @@
 #!/bin/bash
+#    Copyright (C) 2021 Artem Korotchenko <a.korotchenko@korda-group.ru>
         echo '--------------------------------------------------------------------------------'
         echo ' SIM CARD AVAILABILITY'
         echo '--------------------------------------------------------------------------------'

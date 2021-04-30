@@ -21,6 +21,7 @@ if [ $? -eq "0" ]; then
         ./dfi.sh
         ;;
     "2")
+        clear
         IPDFI=$(cat /tmp/ipdfi.tmp)
         sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))"
         sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))"

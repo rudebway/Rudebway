@@ -27,6 +27,7 @@ if [ $? -eq "0" ]; then
         ;;
 
     "4")
+        clear
         sudo ip addr add 192.168.100.128/24 dev enp2s0
         ssh-keygen -f "/root/.ssh/known_hosts" -R 192.168.100.100
         ssh-keyscan -H 192.168.100.100 >>/root/.ssh/known_hosts

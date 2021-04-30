@@ -26,6 +26,7 @@ if [ $? -eq "0" ]; then
             dialog --title "Проверка обновлений" \
                 --msgbox "\n Обновление не требуется" 7 50
         else
+            clear
             cd ~/uuu-korda/
             mkdir old.firmware
             mv $(ls ~/uuu-korda/ | grep openwrt) ~/uuu-korda/old.firmware

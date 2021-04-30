@@ -20,21 +20,25 @@ if [ $? -eq "0" ]; then
         ./clb.sh
         ;;
     "2")
+        clear
         IPDFI=$(cat /tmp/ipdfi.tmp)
         timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 115200 /dev/ttyS0'
         ./clb.sh
         ;;
     "3")
+        clear
         IPDFI=$(cat /tmp/ipdfi.tmp)
         timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 9600 /dev/ublox'
         ./clb.sh
         ;;
     "4")
+        clear
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'sudo systemctl stop cortes'
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'cortes-lctrl callib Focus 74000 30000 -p /dev/leans'
         ./clb.sh
         ;;
     "5")
+        clear
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'sudo systemctl stop cortes'
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'cortes-lctrl callib Diaphragm 2400 5000 -p /dev/leans'
         ./clb.sh

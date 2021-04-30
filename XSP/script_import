@@ -3,7 +3,7 @@ clear
 RED='\033[0;31m'
 GREEN='\033[1;32m'
 NC='\033[0m'
-DISKname=`xe sr-list type=ext --minimal`
+DISKname=$(xe sr-list type=ext --minimal)
 cd /VM
 printf 'Select VM for importing to the server \n \n'
 printf '1) Windows 10 \n'
@@ -14,22 +14,28 @@ printf '3)Previous menu  \n \n'
 read KEY
 
 case $KEY in
-  1)OSname="WT10.vxa"
-    xe vm-import filename=$OSname  sr-uuid=$DISKname
-      clear
-      printf "\n"
-      echo `printf "${GREEN}Import successed${NC}"`
-      printf "\n"
-    sleep 3;;
-  2)OSname="WT10.vxa"
-    xe vm-import filename=$OSname  sr-uuid=$DISKname
-    OSname="RoadAR.vxa"
-    xe vm-import filename=$OSname  sr-uuid=$DISKname
-      clear
-      printf "\n"
-      echo `printf "${GREEN}Import successed${NC}"`
-      printf "\n"
-    sleep 3;;
-  3)clear
-    echo "Back to previous menu";;
+1)
+  OSname="WT10.vxa"
+  xe vm-import filename=$OSname sr-uuid=$DISKname
+  clear
+  printf "\n"
+  echo $(printf "${GREEN}Import successed${NC}")
+  printf "\n"
+  sleep 3
+  ;;
+2)
+  OSname="WT10.vxa"
+  xe vm-import filename=$OSname sr-uuid=$DISKname
+  OSname="RoadAR.vxa"
+  xe vm-import filename=$OSname sr-uuid=$DISKname
+  clear
+  printf "\n"
+  echo $(printf "${GREEN}Import successed${NC}")
+  printf "\n"
+  sleep 3
+  ;;
+3)
+  clear
+  echo "Back to previous menu"
+  ;;
 esac
