@@ -1,5 +1,5 @@
 #!/bin/bash
-# (C) 418-scripts
+# (C) 418
 sudo apt-get install --assume-yes cmake make libc6* libqt5* pkg-config libusb-1.0.0-dev curl gcc progress git openssh-server ssh sshpass
 cd ~
 sudo git clone http://git.korda-group.local/cortes/boards/motioncontroller/flasher.git
