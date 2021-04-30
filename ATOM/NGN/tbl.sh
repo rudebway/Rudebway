@@ -2,13 +2,13 @@
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPTBL="/tmp/cmdtbl.tmp"
 dialog --title "Типовые решения проблем" \
-    --backtitle "АТОМ $IPDFI" \
-    --menu "Выберите возникшую проблему" 15 40 9 \
-    1 "Нет камер в веб-интерфейсе" \
-    2 "Ошибка GPS (host/port)" \
-    3 "Проблемы с моторизацией/GPS" \
-    4 "Проверка доступности SIM" \
-    5 "Назад" 2>$TMPTBL
+--backtitle "АТОМ $IPDFI" \
+--menu "Выберите возникшую проблему" 15 40 9 \
+1 "Нет камер в веб-интерфейсе" \
+2 "Ошибка GPS (host/port)" \
+3 "Проблемы с моторизацией/GPS" \
+4 "Проверка доступности SIM" \
+5 "Назад" 2>$TMPTBL
 CMD2TBL=$(cat $TMPTBL)
 if [ $? -eq "0" ]; then
     case $CMD2TBL in
