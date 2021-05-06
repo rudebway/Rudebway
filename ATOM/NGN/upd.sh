@@ -47,5 +47,3 @@ if [ $? -eq "0" ]; then
 
 fi
 rm -f $TMPUPD
-
-curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37
