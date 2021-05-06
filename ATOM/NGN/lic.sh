@@ -31,7 +31,7 @@ if [ $? -eq "0" ]; then
              dialog --title "Лицензия АТОМа $LICNAME" \
             --msgbox "   Файл запроса уже существует и \n       доступен по адресу \n   10.78.9.10/licenses/$LICNAME" 7 40
         fi
-
+        ./lic.sh
         ;;
     "2")
         mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
@@ -46,6 +46,7 @@ if [ $? -eq "0" ]; then
             dialog --title "Лицензия АТОМа $LICNAME" \
             --msgbox "\n   Файлы ответов записаны" 7 40
         fi
+        ./lic.sh
         ;;
     "3")
         if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license | awk '{print $1}'") -eq "353" ]; then
@@ -60,7 +61,7 @@ if [ $? -eq "0" ]; then
         fi
         dialog --title "Проверка лицензии" \
         --msgbox "\n Лицензия распознавания номера: $LIC1 \n Лицензия распознавания ТС: $LIC2" 7 50
-
+        ./lic.sh
         ;;
     "4")
         echo "Очень рано"
