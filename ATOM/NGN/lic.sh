@@ -31,6 +31,7 @@ if [ $? -eq "0" ]; then
              dialog --title "Лицензия АТОМа $LICNAME" \
             --msgbox "   Файл запроса уже существует и \n       доступен по адресу \n   10.78.9.10/licenses/$LICNAME" 7 40
         fi
+        cd ~/NGN/
         ./lic.sh
         ;;
     "2")
@@ -46,6 +47,7 @@ if [ $? -eq "0" ]; then
              dialog --title "Лицензия АТОМа $LICNAME" \
             --msgbox "\n  Файлы ответов отсутствуют!!!" 7 40
         fi
+        cd ~/NGN/
         ./lic.sh
         ;;
     "3")
@@ -61,6 +63,7 @@ if [ $? -eq "0" ]; then
         fi
         dialog --title "Проверка лицензии" \
         --msgbox "\n Лицензия распознавания номера: $LIC1 \n Лицензия распознавания ТС: $LIC2" 7 50
+        cd ~/NGN/
         ./lic.sh
         ;;
     "4")
