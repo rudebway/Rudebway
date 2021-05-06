@@ -30,6 +30,10 @@ if [ $? -eq "0" ]; then
             cd /serv/licenses/$LICNAME
             touch request.file
             sshpass -p 'Fx566434' ssh admin@$IPDFI "license_checker3">request.file
+        else 
+             dialog --title "Лицензия АТОМа" \
+            --msgbox "\n Файл запроса уже существует" 7 50
+        fi
         ;;
     "3")
         if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license | awk '{print $1}'") -eq "353" ]; then
