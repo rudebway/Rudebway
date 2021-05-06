@@ -25,7 +25,7 @@ if [ $? -eq "0" ]; then
         dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
         LICNAME=$(cat $LICTMPFILE)
         mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv
-        if [ $(ls /serv/licenses | grep $LICNAME) = "" ]; then
+        if [ "$(ls /serv/licenses | grep $LICNAME)" = "" ] ; then
             mkdir /serv/licenses/$LICNAME
             cd /serv/licenses/$LICNAME
             touch request.file
