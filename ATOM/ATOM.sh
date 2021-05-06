@@ -1,5 +1,6 @@
 #!/bin/bash
 # (c) 418
+LICTMPFILE="/tmp/licfile.tmp"
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPFCMD="/tmp/cmd.tmp"
 dialog --title "Работа с АТОМом" \
@@ -41,3 +42,4 @@ if [ $? -eq "0" ]; then
 fi
 rm -f $TMPFCMD
 echo "" >/tmp/ipdfi.tmp
+echo "" >/tmp/licfile.tmp
