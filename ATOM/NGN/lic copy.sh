@@ -38,12 +38,13 @@ if [ $? -eq "0" ]; then
         cd /serv/licenses
         if [ "$(ls /serv/licenses/$LICNAME | grep license)" = "" ]; then
             dialog --title "Лицензия АТОМа $LICNAME" \
-            --msgbox "  Файлы ответов отсутствуют!!!" 7 40
+            --msgbox "\n  Файлы ответов отсутствуют!!!" 7 40
         else
-            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license"<license
-            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license_vehicles"<license_vehicles
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license"<license
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license_vehicles"<license_vehicles
+            dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "\n   Файлы ответов записаны" 7 40
         fi
-        read -s -n 1
         ;;
     "3")
         if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license | awk '{print $1}'") -eq "353" ]; then
