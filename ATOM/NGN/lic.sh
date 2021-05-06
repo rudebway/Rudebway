@@ -1,40 +1,51 @@
 #!/bin/bash
+LICTMPFILE="/tmp/licfile.tmp"
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPLIC="/tmp/fcmd.tmp"
+LICNAME=$(cat $LICTMPFILE)
 dialog --title "Работа с лицензиями" \
-    --backtitle "АТОМ $IPDFI" \
-    --menu "Выберите пункт работ" 15 40 9 \
-    1 "Файл запроса" \
-    2 "Ввести лицензию" \
-    3 "Проверка наличия лицензии" \
-    4 "Взаимодействие с сервером" \
-    5 "Назад" 2>$TMPLIC
+--backtitle "АТОМ $IPDFI" \
+--menu "Выберите пункт работ" 15 40 9 \
+1 "Лицензия автозапрос" \
+2 "Отправка лицензии на АТОМ" \
+3 "Проверка наличия лицензии" \
+4 "Взаимодействие с сервером" \
+5 "Назад" 2>$TMPLIC
 CMD2LIC=$(cat $TMPLIC)
 if [ $? -eq "0" ]; then
     case $CMD2LIC in
     "1")
-        sshpass -p 'Fx566434' ssh admin@$IPDFI "license_checker3" | tee /tmp/lic.tmp
-        read -s -n 1
-        #LIC=$(cat /tmp/lic.tmp)
-        #dialog --title "Файл запроса лицензии" \
-        #--msgbox "\n $LIC" 15 50
+        dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
+        LICNAME=$(cat $LICTMPFILE)
+        mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
+        if [ "$(ls /serv/licenses | grep $LICNAME)" = "" ] ; then
+            mkdir /serv/licenses/$LICNAME
+            cd /serv/licenses/$LICNAME
+            touch request.file
+            dialog --title "Лицензия АТОМа $LICNAME" \
+           --msgbox "     Подождите пару минут, пока \n  создается файл запроса лицензии " 7 40
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "license_checker3">request.file
+            dialog --title "Лицензия АТОМа $LICNAME" \
+           --msgbox "   Файл запроса лицензии создан и \n       доступен по адресу        \n   10.78.9.10/licenses/$LICNAME" 7 40
+        else 
+             dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "   Файл запроса уже существует и \n       доступен по адресу \n   10.78.9.10/licenses/$LICNAME" 7 40
+        fi
+
         ;;
-    "2") 
-        #TMPLIC1="/tmp/license.tmp"
-        #dialog --title "Ввод лицензии" --inputbox "Содержимое license" 8 40 2>$TMPLIC1
-        #CATLIC1=$(cat $TMPLIC1)
-        #TMPLIC2="/tmp/license_vehicles.tmp"
-        #dialog --title "Ввод лицензии" --inputbox "Содержимое license_vehicles" 8 40 2>$TMPLIC2
-        #CATLIC2=$(cat $TMPLIC2)
-        clear
-        echo "Ввод лицензии распознавания номера (license)"
-        sshpass -p 'Fx566434' ssh admin@$IPDFI -T "nano license"
-        clear
-        echo "Ввод лицензии распознавания ТС (license_vehicles)"
-        sshpass -p 'Fx566434' ssh admin@$IPDFI -T "nano license_vehicles"
-        clear
-        echo "Лицензии введены, перепроверьте"
-        read -s -n 1
+    "2")
+        mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
+        cd /serv/licenses
+        if [ "$(ls /serv/licenses/$LICNAME | grep license)" = "" ]; then
+            dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "\n  Файлы ответов отсутствуют!!!" 7 40
+        else
+            cd /serv/licenses/$LICNAME
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license"<license
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license_vehicles"<license_vehicles
+            dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "\n   Файлы ответов записаны" 7 40
+        fi
         ;;
     "3")
         if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license | awk '{print $1}'") -eq "353" ]; then
@@ -48,18 +59,19 @@ if [ $? -eq "0" ]; then
             LIC2=$(echo Пуста)
         fi
         dialog --title "Проверка лицензии" \
-            --msgbox "\n Лицензия распознавания номера: $LIC1 \n Лицензия распознавания ТС: $LIC2" 7 50
+        --msgbox "\n Лицензия распознавания номера: $LIC1 \n Лицензия распознавания ТС: $LIC2" 7 50
 
         ;;
-    "4") 
+    "4")
         echo "Очень рано"
-    
-    ;;
 
-    
-    "5") ;;
+        ;;
+
+    \
+        "5") ;;
 
     esac
 
 fi
 rm -f $TMPLIC
+
