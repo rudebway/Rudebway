@@ -36,15 +36,15 @@ if [ $? -eq "0" ]; then
     "2")
         mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
         cd /serv/licenses
-        if [ "$(ls /serv/licenses/$LICNAME | grep license)" = "" ]; then
-            dialog --title "Лицензия АТОМа $LICNAME" \
-            --msgbox "\n  Файлы ответов отсутствуют!!!" 7 40
-        else
+        if [ "$(ls /serv/licenses/$LICNAME | grep license)" != "" ]; then
             cd /serv/licenses/$LICNAME
             sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license"<license
             sshpass -p 'Fx566434' ssh admin@$IPDFI "cat > license_vehicles"<license_vehicles
             dialog --title "Лицензия АТОМа $LICNAME" \
             --msgbox "\n   Файлы ответов записаны" 7 40
+        else
+             dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "\n  Файлы ответов отсутствуют!!!" 7 40
         fi
         ./lic.sh
         ;;
