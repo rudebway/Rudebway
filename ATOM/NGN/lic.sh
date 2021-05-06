@@ -49,12 +49,12 @@ if [ $? -eq "0" ]; then
         ./lic.sh
         ;;
     "3")
-        if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license | awk '{print $1}'") -eq "353" ]; then
+        if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license" | awk '{print $1}') -eq "353" ]  ||  [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license" | awk '{print $1}') -eq "349" ]; then
             LIC1=$(echo Установлена)
         else
             LIC1=$(echo Пуста)
         fi
-        if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license_vehicles | awk '{print $1}'") -eq "353" ]; then
+        if [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license_vehicles" | awk '{print $1}') -eq "353" ] || [ $(sshpass -p 'Fx566434' ssh admin@$IPDFI "wc -c license_vehicles" | awk '{print $1}') -eq "349" ]; then
             LIC2=$(echo Установлена)
         else
             LIC2=$(echo Пуста)
