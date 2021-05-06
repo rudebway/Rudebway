@@ -22,20 +22,27 @@ if [ $? -eq "0" ]; then
             mkdir /serv/licenses/$LICNAME
             cd /serv/licenses/$LICNAME
             touch request.file
+            dialog --title "Лицензия АТОМа $LICNAME" \
+           --msgbox "     Подождите пару минут, пока \n  создается файл запроса лицензии " 7 40
             sshpass -p 'Fx566434' ssh admin@$IPDFI "license_checker3">request.file
             dialog --title "Лицензия АТОМа $LICNAME" \
-           --msgbox "\n Файл запроса лицензии создан и \n доступен на 10.78.9.10/licenses/$LICNAME \n для получения ответа с сайта" 7 40
+           --msgbox "   Файл запроса лицензии создан и \n       доступен по адресу        \n   10.78.9.10/licenses/$LICNAME" 7 40
         else 
              dialog --title "Лицензия АТОМа $LICNAME" \
-            --msgbox "\n Файл запроса уже существует и \n доступен на 10.78.9.10/licenses/$LICNAME" 7 40
+            --msgbox "   Файл запроса уже существует и \n       доступен по адресу \n   10.78.9.10/licenses/$LICNAME" 7 40
         fi
 
         ;;
     "2")
         mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
-        cd /serv/lecenses
-        sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license"<license
-        sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license_vehicles"<license_vehicles
+        cd /serv/licenses
+        if [ "$(ls /serv/licenses/$LICNAME | grep license)" = "" ]; then
+            dialog --title "Лицензия АТОМа $LICNAME" \
+            --msgbox "  Файлы ответов отсутствуют!!!" 7 40
+        else
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license"<license
+            sshpass -p 'Fx566434' ssh admin@$IPDFI "cat license_vehicles"<license_vehicles
+        fi
         read -s -n 1
         ;;
     "3")
