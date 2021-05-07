@@ -43,3 +43,4 @@ fi
 rm -f $TMPFCMD
 echo "" >/tmp/ipdfi.tmp
 echo "" >/tmp/licfile.tmp
+echo "" >/tmp/atom.tmp

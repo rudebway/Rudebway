@@ -8,7 +8,8 @@ dialog --title "Работа с DFI" \
 2 "Установка CORTES" \
 3 "Лицензия" \
 4 "Настройки и тесты" \
-5 "Назад" 2>$TMPDFI
+5 "Автоустановка" \
+6 "Назад" 2>$TMPDFI
 CMD2DFI=$(cat $TMPDFI)
 if [ $? -eq "0" ]; then
     case $CMD2DFI in
@@ -26,6 +27,7 @@ if [ $? -eq "0" ]; then
         sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))"
         sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))"
         read -s -n 1
+        ./dfi.sh
         ;;
     "3")
         ./lic.sh && ./dfi.sh
@@ -33,9 +35,10 @@ if [ $? -eq "0" ]; then
     "4")
         ./clb.sh && ./dfi.sh
         ;;
-    "5") ;;
-
+    "5")
+        ./aut.sh && ./dfi.sh
+        ;;
+    "6") ;;
     esac
-
 fi
 rm -f $TMPDFI
