@@ -24,11 +24,13 @@ if [ $? -eq "0" ]; then
         IPDFI=$(cat /tmp/ipdfi.tmp)
         timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 115200 /dev/ttyS0'
         ./clb.sh
+        read -s -n 1
         ;;
     "3")
         clear
         IPDFI=$(cat /tmp/ipdfi.tmp)
         timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI 'picocom -b 9600 /dev/ublox'
+        read -s -n 1
         ./clb.sh
         ;;
     "4")
