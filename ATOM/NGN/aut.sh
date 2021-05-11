@@ -19,14 +19,14 @@ chk_gps() {
     IPDFI=$(cat /tmp/ipdfi.tmp)
     local usb="$1"
     timeout 5s sshpass -p 'Fx566434' ssh admin@$IPDFI "picocom -b 9600 $usb" >/tmp/gps
-    GPST=$(wc -c /tmp/gps | awk '{print $1}')
+    GPST=$(wc -c /tmp/gps | awk '{print $1}') 2>/dev/null
     if [ "$GPST" -gt "590" ]; then
         GPS="GPS работает нормально"
     else
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/ublox' >/dev/null
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans' >/dev/null
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect' >/dev/null
-        GPST=$(wc -c /tmp/gps | awk '{print $1}')
+        GPST=$(wc -c /tmp/gps | awk '{print $1}') 2>/dev/null
         if [ "$GPST" -gt "590" ]; then
             GPS="GPS работает нормально"
         else
