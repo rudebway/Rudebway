@@ -70,23 +70,24 @@ IPDFI=$(cat /tmp/ipdfi.tmp)
 
 LICFILE="/tmp/atom.tmp"
 dialog --title "Серийный номер АТОМА" --inputbox "Введите серийный номер:" 8 40 2>$LICFILE
-#if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~ | grep cortes')" -ne "cortes" ]; then
-#    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
-#    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" 2>&1 >/dev/null
-#
-#    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
-#else
-#    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
-#    CRT="CORTES установлен"
-#    if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)" == "1.0.6" ]; then
-#        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
-#        SDK="Версия RoadAR SDK $SDKVER"
-#    else
-#        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
-#        sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
-#        SDK="Версия RoadAR SDK $SDKVER"
-#    fi
-#fi
+if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~ | grep cortes')" -ne "cortes" ]; then
+    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
+    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" 2>&1 >/dev/null
+
+    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
+else
+    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
+    CRT="CORTES установлен"
+    if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)" == "1.0.6" ]; then
+        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
+        SDK="Версия RoadAR SDK $SDKVER"
+    else
+        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
+        sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
+        SDK="Версия RoadAR SDK $SDKVER"
+    fi
+fi
+TSTUSB=$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls /dev/ | grep USB | tr -d "ttyUSB; \n"')
 if [ "$TSTUSB" == "01" ]; then
     echo "70" | dialog --title "Автонастройка АТОМа" --gauge "Проверка моторизации и GPS" 7 70 0
     RESULT="Провода FTDI -> DFI в порядке"
@@ -117,4 +118,4 @@ LIC=$(chk_lic)
 echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Составление отчета" 7 70 0
 sleep 2
 dialog --title "Отчёт по оборудованию" \
-    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 11 60
+    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC" 9 60
