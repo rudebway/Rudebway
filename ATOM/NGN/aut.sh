@@ -26,6 +26,7 @@ chk_gps() {
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/ublox' >/dev/null
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans' >/dev/null
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect' >/dev/null
+        GPST=$(wc -c /tmp/gps | awk '{print $1}')
         if [ "$GPST" -gt "590" ]; then
             GPS="GPS работает нормально"
         else
