@@ -16,7 +16,7 @@ if [ $? -eq "0" ]; then
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'rm -rf ~/cortes/security_keys/*'
         ./tbl.sh
         ;;
-    "")
+    "2")
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S systemctl restart gpsd'
         ./tbl.sh
         ;;
