@@ -22,7 +22,7 @@ if [ $? -eq "0" ]; then
     "2")
         clear
         cd ~/flasher/
-        ./flashFW.sh
+        timeout 160s ./flashFW.sh
         echo "Press any key"
         read -s -n 1
         cd ~/NGN/
@@ -31,7 +31,7 @@ if [ $? -eq "0" ]; then
     "3")
         clear
         cd ~/flasher/
-        ./testBoard.sh
+        timeout 40s ./testBoard.sh
         echo "Press any key"
         read -s -n 1
         cd ~/NGN/
