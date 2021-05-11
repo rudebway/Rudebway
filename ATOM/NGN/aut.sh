@@ -23,9 +23,9 @@ chk_gps() {
     if [ "$GPST" -gt "590" ]; then
         GPS="GPS работает нормально"
     else
-        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/ublox' >/dev/null
-        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans' >/dev/null
-        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect' >/dev/null
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/ublox' &>/dev/null
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S rm /dev/leans' &>/dev/null
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect' &>/dev/null
         GPST=$(wc -c /tmp/gps | awk '{print $1}') 2>/dev/null
         if [ "$GPST" -gt "590" ]; then
             GPS="GPS работает нормально"
@@ -82,8 +82,10 @@ SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roa
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; then
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" &>/dev/null
-
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" &>/dev/null
+    CRT="CORTES установлен"
+    SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)"
+    SDK="Версия RoadAR SDK $SDKVER"
 else
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     CRT="CORTES установлен"
@@ -92,7 +94,7 @@ else
         SDK="Версия RoadAR SDK $SDKVER"
     else
         echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
-        sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
+        sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 &>/dev/null
         SDK="Версия RoadAR SDK $SDKVER"
     fi
 fi
@@ -103,7 +105,7 @@ if [ "$TSTUSB" == "01" ]; then
     MTR=$(chk_mtr /dev/leans)
     GPS=$(chk_gps /dev/ublox)
 elif [ "$TSTUSB" == "0" ] || [ "$TSTUSB" == "1" ]; then
-    FTD=$(sshpass -p 'Fx566434' ssh admin@$IPDFI "echo moLD02p | sudo -S rm -f /dev/leans /dev/ublox && sudo FtDetect |grep USB" | awk '{print $3}') 2>&1 >/dev/null
+    FTD=$(sshpass -p 'Fx566434' ssh admin@$IPDFI "echo moLD02p | sudo -S rm -f /dev/leans /dev/ublox && sudo FtDetect |grep USB" | awk '{print $3}') &>/dev/null
     echo "80" | dialog --title "Автонастройка АТОМа" --gauge "Поиск недостающего USB" 7 70 0
     if [ "$FTD" == "0" ] || [ "$FTD" == "1" ]; then
         echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Тест моторизации" 7 70 0
