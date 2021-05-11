@@ -129,4 +129,4 @@ LIC=$(chk_lic)
 echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Составление отчета" 7 70 0
 sleep 2
 dialog --title "Отчёт по оборудованию" \
-    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 11 48
+    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 12 48
