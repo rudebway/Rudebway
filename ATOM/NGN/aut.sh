@@ -81,9 +81,9 @@ dialog --title "Серийный номер АТОМА" --inputbox "Введит
 SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)"
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; then
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
-    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" 2>&1 >/dev/null
+    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" >/dev/null
 
-    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 2>&1 >/dev/null
+    sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" >/dev/null
 else
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     CRT="CORTES установлен"
