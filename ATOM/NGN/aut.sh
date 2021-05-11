@@ -70,6 +70,7 @@ IPDFI=$(cat /tmp/ipdfi.tmp)
 
 LICFILE="/tmp/atom.tmp"
 dialog --title "Серийный номер АТОМА" --inputbox "Введите серийный номер:" 8 40 2>$LICFILE
+SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)"
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~ | grep cortes')" -ne "cortes" ]; then
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" 2>&1 >/dev/null
@@ -118,4 +119,4 @@ LIC=$(chk_lic)
 echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Составление отчета" 7 70 0
 sleep 2
 dialog --title "Отчёт по оборудованию" \
-    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 9 60
+    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 11 60
