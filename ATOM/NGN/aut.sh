@@ -2,6 +2,7 @@
 chk_mtr() {
     IPDFI=$(cat /tmp/ipdfi.tmp)
     local usb="$1"
+    sshpass -p 'Fx566434' ssh admin@$IPDFI 'echo moLD02p | sudo -S FtDetect' &>/dev/null
     sshpass -p 'Fx566434' ssh admin@$IPDFI 'sudo systemctl stop cortes'
     sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-lctrl callib Focus 74000 30000 -p $usb" >/tmp/mtrf
     sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-lctrl callib Diaphragm 2400 5000 -p $usb" >/tmp/mtrd
