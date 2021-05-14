@@ -39,9 +39,7 @@ chk_gps() {
             else
                 GPS="Нет данных с GPS"
             fi
-
         fi
-
     fi
     rm -f /tmp/gps
     echo $GPS
