@@ -32,3 +32,6 @@ cp -r ~/Rudebway/ATOM/* ~
 rm -rf ~/Rudebway/
 chmod +x ATOM.sh
 chmod +x ~/NGN/*
+cd ~
+echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
+source ~/.bashrc

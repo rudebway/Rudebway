@@ -99,7 +99,7 @@ if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; t
     SDK="Версия RoadAR SDK $SDKVER"
 else
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
-    CRT="CORTES установлен"
+    CRT="CORTES уже был установлен"
     if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)" == "1.0.6" ]; then
         echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
         SDK="Версия RoadAR SDK $SDKVER"

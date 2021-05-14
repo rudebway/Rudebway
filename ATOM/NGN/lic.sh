@@ -12,11 +12,11 @@ dialog --title "Работа с лицензиями" \
 4 "Взаимодействие с сервером" \
 5 "Назад" 2>$TMPLIC
 CMD2LIC=$(cat $TMPLIC)
+dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
+LICNAME=$(cat $LICTMPFILE)
 if [ $? -eq "0" ]; then
     case $CMD2LIC in
     "1")
-        dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
-        LICNAME=$(cat $LICTMPFILE)
         mount -t cifs -o username=root,password=Fx566434 //10.78.9.10/PrOt /serv 2>/dev/null
         if [ "$(ls /serv/licenses | grep $LICNAME)" = "" ] ; then
             mkdir /serv/licenses/$LICNAME
