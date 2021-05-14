@@ -2,6 +2,7 @@
 LICTMPFILE="/tmp/licfile.tmp"
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPLIC="/tmp/fcmd.tmp"
+dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
 LICNAME=$(cat $LICTMPFILE)
 dialog --title "Работа с лицензиями" \
 --backtitle "АТОМ $IPDFI" \
@@ -12,8 +13,6 @@ dialog --title "Работа с лицензиями" \
 4 "Взаимодействие с сервером" \
 5 "Назад" 2>$TMPLIC
 CMD2LIC=$(cat $TMPLIC)
-dialog --title "Лицензия АТОМа" --inputbox "Введите серийный номер АТОМа:" 8 40 2>$LICTMPFILE
-LICNAME=$(cat $LICTMPFILE)
 if [ $? -eq "0" ]; then
     case $CMD2LIC in
     "1")
