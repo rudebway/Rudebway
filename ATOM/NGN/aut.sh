@@ -92,6 +92,7 @@ SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roa
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; then
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" &>/dev/null
+    echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Установка ROADAR SDK" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" &>/dev/null
     CRT="CORTES установлен"
     SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)"
@@ -109,14 +110,17 @@ else
     fi
 fi
 TSTUSB=$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls /dev/ | grep USB | tr -d "ttyUSB; \n"')
+echo "50" | dialog --title "Автонастройка АТОМа" --gauge "Проверка подключения USB" 7 70 0
+sleep 1
 if [ "$TSTUSB" == "01" ]; then
-    echo "70" | dialog --title "Автонастройка АТОМа" --gauge "Проверка моторизации и GPS" 7 70 0
+    echo "60" | dialog --title "Автонастройка АТОМа" --gauge "Проверка моторизации и GPS" 7 70 0
     RESULT="Провода FTDI -> DFI в порядке"
     MTR=$(chk_mtr /dev/leans)
     GPS=$(chk_gps /dev/ublox)
 elif [ "$TSTUSB" == "0" ] || [ "$TSTUSB" == "1" ]; then
     FTD=$(sshpass -p 'Fx566434' ssh admin@$IPDFI "echo moLD02p | sudo -S rm -f /dev/leans /dev/ublox && sudo FtDetect |grep USB" | awk '{print $3}') &>/dev/null
     echo "80" | dialog --title "Автонастройка АТОМа" --gauge "Поиск недостающего USB" 7 70 0
+    sleep 1
     if [ "$FTD" == "0" ] || [ "$FTD" == "1" ]; then
         echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Тест моторизации" 7 70 0
         MRT=$(chk_mtr /dev/leans)
@@ -124,6 +128,7 @@ elif [ "$TSTUSB" == "0" ] || [ "$TSTUSB" == "1" ]; then
 
     else
         echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Тест GPS" 7 70 0
+        sleep 1
         GPS=$(chk_gps /dev/$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls /dev/ | grep ttyUSB'))
         MTR="Калибровка моторизации невозможна"
         RESULT="Нет соединения DFI -> моторизация"
