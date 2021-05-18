@@ -26,6 +26,7 @@ if [ $? -eq "0" ]; then
             dialog --title "Проверка обновлений" \
                 --msgbox "\n Обновление не требуется" 7 50
         else
+            :<<time_del
             clear
             cd ~/uuu-korda/
             mkdir old.firmware
@@ -38,6 +39,8 @@ if [ $? -eq "0" ]; then
             rm -rf ~/uuu-korda/10.78.1.67/
             dialog --title "Проверка обновлений" \
                 --msgbox "\n Обновление завершено" 7 50
+            time_del
+        
         fi
         ./upd.sh
         ;;
