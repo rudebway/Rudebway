@@ -26,8 +26,7 @@ if [ $? -eq "0" ]; then
             dialog --title "Проверка обновлений" \
                 --msgbox "\n Обновление не требуется" 7 50
         else
-           
-           # clear
+           clear
            # cd ~/uuu-korda/
            # mkdir old.firmware
            # mv $(ls ~/uuu-korda/ | grep openwrt) ~/uuu-korda/old.firmware
@@ -37,8 +36,8 @@ if [ $? -eq "0" ]; then
            # mkdir web.firmware
            # mv $(ls ~/uuu-korda/ | grep sysup) ~/uuu-korda/web.firmware
            # rm -rf ~/uuu-korda/10.78.1.67/
-           # dialog --title "Проверка обновлений" \
-           #     --msgbox "\n Обновление завершено" 7 50
+            dialog --title "Проверка обновлений" \
+                --msgbox "\n Обновление завершено" 7 50
             
         fi
         ./upd.sh
