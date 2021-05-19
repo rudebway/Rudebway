@@ -21,8 +21,8 @@ MENU=$(
 dialog --title "Обновление" \
 --backtitle "АТОМ $IPDFI" \
 --menu "Выберите тип обновлений" 15 40 9 \
-$MENU 2>$TMPUPD
-CMD2UPD=$(cat $TMPUPD)
+$MENU 2>$TMPUPD2
+CMD2UPD=$(cat $TMPUPD2)
 if [ $? -eq "0" ]; then
     case $CMD2UPD in
     "1")
