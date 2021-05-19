@@ -11,11 +11,11 @@ TABLE=$(cat /tmp/table.tmp)
 STRINGS=$(wc -l /tmp/table.tmp | awk '{print $1}')
 MENU=$(
     x=1
-    while [x < $STRINGS]
-    do
-    STR=$($TABLE | head -n$x | tail -n1)
-    echo "$x $STR "
-    x=$(($x+1))
+    while [ $x -le "$STRINGS" ]; do
+        STR=$(cat /tmp/table | head -n$x | tail -n1)
+        echo $x
+        echo $STR
+        x=$(($x + 1))
     done
 )
 
