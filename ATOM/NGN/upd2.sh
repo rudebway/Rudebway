@@ -11,7 +11,7 @@ TABLE=$(cat /tmp/table.tmp)
 STRINGS=$(wc -l /tmp/table.tmp)
 MENU=$(
     x=1
-    while x<=$STRINGS
+    while [x <= $STRINGS]
     do
     STR=$(cat $TABLE | head -n$x | tail -n1)
     echo "$x $STR "
