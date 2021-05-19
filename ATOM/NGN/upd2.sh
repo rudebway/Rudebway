@@ -3,8 +3,8 @@ IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPUPD2="/tmp/cmdupd2.tmp"
 
 ls ~/uuu-korda/old.firmwares | grep qspi- | cut -c22-28 >/tmp/table.tmp
-ls ~/uuu-korda/ | grep qspi- | cut -c22-28 >>/tmp/table.tmp
-curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37 >>/tmp/table.tmp
+ls ~/uuu-korda/ | grep qspi- | cut -c22-28 >/tmp/table.tmp
+curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37 >/tmp/table.tmp
 
 TABLE=$(cat /tmp/table.tmp)
 
@@ -62,4 +62,4 @@ if [ $? -eq "0" ]; then
     esac
 
 fi
-rm -f $TMPUPD
+rm -f $TMPUPD2
