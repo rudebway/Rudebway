@@ -1,13 +1,27 @@
 #!/bin/bash
 IPDFI=$(cat /tmp/ipdfi.tmp)
-TMPUPD="/tmp/cmdupd.tmp"
+TMPUPD2="/tmp/cmdupd2.tmp"
+
+ls ~/uuu-korda/old.firmwares | grep qspi- | cut -c22-28 >/tmp/table.tmp
+ls ~/uuu-korda/ | grep qspi- | cut -c22-28 >>/tmp/table.tmp
+curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37 >>/tmp/table.tmp
+
+TABLE=$(cat /tmp/table.tmp)
+
+STRINGS=$(wc -l /tmp/table.tmp)
+MENU=$(
+    x=1
+    while x<=$STRINGS
+    do
+    STR=$(cat $TABLE | head -n$x | tail -n1)
+    echo "$x $STR "
+    done
+)
+
 dialog --title "Обновление" \
 --backtitle "АТОМ $IPDFI" \
 --menu "Выберите тип обновлений" 15 40 9 \
-1 "Обновление данной программы" \
-2 "Обновление прошивки БКП" \
-3 "Тест списка обновлений" \
-4 "Назад" 2>$TMPUPD
+$MENU 2>$TMPUPD
 CMD2UPD=$(cat $TMPUPD)
 if [ $? -eq "0" ]; then
     case $CMD2UPD in
@@ -43,10 +57,7 @@ if [ $? -eq "0" ]; then
         fi
         ./upd.sh
         ;;
-    "3")
-        ./upd2.sh
-        ;;
-    "4") ;;
+    "3") ;;
 
     esac
 
