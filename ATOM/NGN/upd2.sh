@@ -8,7 +8,7 @@ curl -s http://10.78.1.67/Alvarado/ | grep qspi | cut -c31-37 >>/tmp/table.tmp
 
 TABLE=$(cat /tmp/table.tmp)
 
-STRINGS=$(wc -l /tmp/table.tmp)
+STRINGS=$(wc -l /tmp/table.tmp | awk'{print $1}'))
 MENU=$(
     x=1
     while [x < "$STRINGS"]
