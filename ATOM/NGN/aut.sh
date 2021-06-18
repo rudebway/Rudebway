@@ -86,19 +86,19 @@ IPDFI=$(cat /tmp/ipdfi.tmp)
 
 LICFILE="/tmp/atom.tmp"
 dialog --title "Серийный номер АТОМА" --inputbox "Введите серийный номер:" 8 40 2>$LICFILE
-SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-6)"
+SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)"
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; then
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" &>/dev/null
     echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Установка ROADAR SDK" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" &>/dev/null
     CRT="CORTES установлен"
-    SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)"
+    SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)"
     SDK="Версия RoadAR SDK $SDKVER"
 else
     echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     CRT="CORTES уже был установлен"
-    if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $2}' | cut -b 2-6)" == "1.0.6" ]; then
+    if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)" == "1.0.6" ]; then
         echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
         SDK="Версия RoadAR SDK $SDKVER"
     else
