@@ -88,44 +88,34 @@ LICFILE="/tmp/atom.tmp"
 dialog --title "Серийный номер АТОМА" --inputbox "Введите серийный номер:" 8 40 2>$LICFILE
 SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)"
 if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls ~/cortes/cortes')" == "" ]; then
-    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/install_atom.sh))" 
-    echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Установка ROADAR SDK" 7 70 0
     sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 
     CRT="CORTES установлен"
     SDKVER="$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)"
     SDK="Версия RoadAR SDK $SDKVER"
 else
-    echo "10" | dialog --title "Автонастройка АТОМа" --gauge "Установка CORTES" 7 70 0
     CRT="CORTES уже был установлен"
     if [ "$(sshpass -p 'Fx566434' ssh admin@$IPDFI "cortes-builder list | grep roadarsdk" | awk '{print $3}' | cut -b 1-5)" == "1.0.6" ]; then
-        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
         SDK="Версия RoadAR SDK $SDKVER"
     else
-        echo "30" | dialog --title "Автонастройка АТОМа" --gauge "Обновление SDK ROADAR" 7 70 0
         sshpass -p 'Fx566434' ssh admin@$IPDFI "bash <(sed 's/sudo/echo moLD02p | sudo -S/g' <(wget -qO- http://10.78.1.67/update_roadar.sh))" 
         SDK="Версия RoadAR SDK $SDKVER"
     fi
 fi
 TSTUSB=$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls /dev/ | grep USB | tr -d "ttyUSB; \n"')
-echo "50" | dialog --title "Автонастройка АТОМа" --gauge "Проверка подключения USB" 7 70 0
 sleep 1
 if [ "$TSTUSB" == "01" ]; then
-    echo "60" | dialog --title "Автонастройка АТОМа" --gauge "Проверка моторизации и GPS" 7 70 0
     RESULT="Провода FTDI -> DFI в порядке"
     MTR=$(chk_mtr /dev/leans)
     GPS=$(chk_gps /dev/ublox)
 elif [ "$TSTUSB" == "0" ] || [ "$TSTUSB" == "1" ]; then
     FTD=$(sshpass -p 'Fx566434' ssh admin@$IPDFI "echo moLD02p | sudo -S rm -f /dev/leans /dev/ublox && sudo FtDetect |grep USB" | awk '{print $3}') 
-    echo "80" | dialog --title "Автонастройка АТОМа" --gauge "Поиск недостающего USB" 7 70 0
     sleep 1
     if [ "$FTD" == "0" ] || [ "$FTD" == "1" ]; then
-        echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Тест моторизации" 7 70 0
         MRT=$(chk_mtr /dev/leans)
         RESULT="Нет соединения DFI -> БСИ"
 
     else
-        echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Тест GPS" 7 70 0
         sleep 1
         GPS=$(chk_gps /dev/$(sshpass -p 'Fx566434' ssh admin@$IPDFI 'ls /dev/ | grep ttyUSB'))
         MTR="Калибровка моторизации невозможна"
@@ -134,12 +124,11 @@ elif [ "$TSTUSB" == "0" ] || [ "$TSTUSB" == "1" ]; then
     fi
 else
     RESULT="Провод FTDI -> DFI не подключен/не работает"
-    echo "70" | dialog --title "Автонастройка АТОМа" --gauge "Регистрация ошибок USB" 17 70 0
 fi
-echo "80" | dialog --title "Автонастройка АТОМа" --gauge "Запрос лицензии и проверка радара" 7 70 0
 RDR=$(chk_rdr)
 LIC=$(chk_lic)
-echo "90" | dialog --title "Автонастройка АТОМа" --gauge "Составление отчета" 7 70 0
 sleep 2
-dialog --title "Отчёт по оборудованию" \
-    --msgbox "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 12 48
+#dialog --title "Отчёт по оборудованию" \
+#    --msgbox 
+echo -n "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 
+#12 48
