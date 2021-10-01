@@ -81,7 +81,7 @@ chk_lic() {
     fi
     echo $LIC
 }
-
+ 
 IPDFI=$(cat /tmp/ipdfi.tmp)
 
 LICFILE="/tmp/atom.tmp"
