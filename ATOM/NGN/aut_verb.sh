@@ -131,4 +131,4 @@ sleep 2
 #dialog --title "Отчёт по оборудованию" \
 #    --msgbox 
 echo -n "$RESULT\n$MTR\n$GPS\n$RDR\n$LIC\n$CRT\n$SDK" 
-#12 48
+#12 418

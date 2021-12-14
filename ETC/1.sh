@@ -23,7 +23,6 @@ curl -X PUT "http://127.0.0.1:5238/configuration/%2F" -H "accept: */*" -H "Conte
 sudo systemctl stop cortes && sudo ipcrm -a && sudo systemctl start cortes
 
 
-
 pglitecli reset
 sudo su
 moLD02p
