@@ -1,5 +1,4 @@
 #!/bin/bash
-#hello
 IPDFI=$(cat /tmp/ipdfi.tmp)
 TMPUPD="/tmp/cmdupd.tmp"
 dialog --title "Обновление" \
