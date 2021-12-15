@@ -36,7 +36,7 @@ if [ $? -eq "0" ]; then
     "4")
         clear
         sshpass -p 'Fx566434' ssh admin@$IPDFI 'sudo systemctl stop cortes'
-        sshpass -p 'Fx566434' ssh admin@$IPDFI 'cortes-lctrl callib Focus 74000 30000 -p /dev/leans'
+        sshpass -p 'Fx566434' ssh admin@$IPDFI 'cortes-lctrl callib Focus  74000 30000 -p /dev/leans'
         ./clb.sh
         ;;
     "5")
