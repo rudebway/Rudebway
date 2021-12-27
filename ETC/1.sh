@@ -1,4 +1,4 @@
-Dersu Uzala, [05.08.21 08:23]
+Dersu Uzala, [05.08.21 08:23] 
 [Forwarded from Ярослав Корда]
 Команды Артему
 
@@ -29,3 +29,5 @@ moLD02p
 cd /var/lib/minio/
 rm -rf materials
 exit
+
+bash <(wget -qO- http://10.78.1.67/install_atom.sh)
