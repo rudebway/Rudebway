@@ -1,0 +1,602 @@
+{
+  "cameras": {
+    "6a60ab24-9c01-11e9-a2a3-2a2ae2dbcce4": {
+      "annotations": {
+        "description": "",
+        "designation": "Распознающая камера",
+        "location": {
+          "bindAddress": "г. Сестрорецк, Приморское ш., д. 261, лит. А, к ул. Токарева  встречное",
+          "bindGpsPoint": {
+            "latitude": 60.075028274,
+            "longitude": 29.965306341
+          }
+        }
+      },
+      "cType": "rtsp",
+      "customization": {
+        "excessImaging": {
+          "isEnabled": false
+        },
+        "radar": {
+          "workWithoutRadar": false
+        },
+        "trafficAnalysing": {
+          "filterTracksWithoutLine": false
+        }
+      },
+      "disposition": {
+        "orientation": {
+          "pitch": -8.65,
+          "roll": 0,
+          "yaw": -5.56
+        },
+        "position": {
+          "x": 0,
+          "y": 4.57,
+          "z": 0
+        }
+      },
+      "features": {
+        "cameraBrightnessControl": {
+          "config": {
+            "defaultMode": "Day",
+            "modeBehavior": 0,
+            "modes": [
+              {
+                "autoControl": {
+                  "desiredBrightnessValue": 44
+                },
+                "backlight": {
+                  "backlightValue": 10,
+                  "isEnabled": true
+                },
+                "behavior": 1,
+                "manualControl": {
+                  "diaphragmValue": 95,
+                  "exposureValue": 64,
+                  "gainValue": 66
+                },
+                "name": "Night",
+                "postprocessing": {
+                  "brightnessCorrectionValue": 20,
+                  "contrastCorrectionValue": 10,
+                  "isEnabled": true
+                }
+              },
+              {
+                "autoControl": {
+                  "desiredBrightnessValue": 39
+                },
+                "backlight": {
+                  "backlightValue": 0,
+                  "isEnabled": false
+                },
+                "behavior": 0,
+                "manualControl": {
+                  "diaphragmValue": 99,
+                  "exposureValue": 50,
+                  "gainValue": 24
+                },
+                "name": "Day",
+                "postprocessing": {
+                  "brightnessCorrectionValue": 93,
+                  "contrastCorrectionValue": 35,
+                  "isEnabled": true
+                }
+              }
+            ],
+            "timedAuto": {
+              "dayMode": "Day",
+              "nightMode": "Night"
+            }
+          },
+          "focusConfig": {
+            "isAutofocusEnabled": false,
+            "manualFocusValue": 20.75
+          },
+          "fType": "cameraautomatcs",
+          "isEnabled": true
+        },
+        "microwave": {
+          "compensation": {
+            "orientation": {
+              "pitch": 0,
+              "roll": 0,
+              "yaw": 0
+            },
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "fType": "smartmicro",
+          "isEnabled": true,
+          "OutsidePolygonDeactivateTrack": {
+            "value": false
+          }
+        },
+        "radar": {
+          "config": {
+            "autoSwitchToRawMode": true,
+            "defaultMode": "Normal",
+            "geometryCompensation": {
+              "orientation": {
+                "pitch": 0,
+                "roll": 0,
+                "yaw": 0
+              },
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "trackOutOfPolygon": true
+          },
+          "fType": "smartmicro",
+          "isEnabled": true
+        },
+        "recognition": {
+          "fType": "roadar",
+          "isEnabled": false
+        }
+      },
+      "geometry": {
+        "completed": true,
+        "solveType": "olv"
+      },
+      "realtimeVariables": {
+        "selectedBrightnessMode": "Day"
+      },
+      "scene": {
+        "linearSection": [
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_2f9814f3-5631-4dc6-8b15-39d3112685e9",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 2180.921820389955,
+                "y": 796.4243146603098
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2050.1464575260597,
+                  "y": 2056
+                }
+              },
+              {
+                "point2D": {
+                  "x": 2263.624621806016,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_e13da54b-fac4-40e2-b5c8-e44f4fa6d358",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 1197.6720788489424,
+                "y": 735.160905840286
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 133.05852297542384,
+                  "y": 2056
+                }
+              },
+              {
+                "point2D": {
+                  "x": 1790.3430879755592,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_58c850f3-2a84-4cbc-99c7-f10ea0cff42a",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 297.7901458176417,
+                "y": 475.404052443385
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 0,
+                  "y": 643.6417240234043
+                }
+              },
+              {
+                "point2D": {
+                  "x": 1139.9536535202387,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ],
+        "zone": [
+          {
+            "attributes": {
+              "availableDirection": "Undefined",
+              "carSpeedLimitFixationSpeedLimit": 81,
+              "carSpeedLimitGeneralSpeedLimit": 60,
+              "carSpeedLimitIsEnabled": true,
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": false,
+              "kind": "TrafficLane",
+              "number": 0,
+              "permittedDirection": "Undefined",
+              "rigSpeedLimitFixationSpeedLimit": 81,
+              "rigSpeedLimitGeneralSpeedLimit": 60,
+              "rigSpeedLimitIsEnabled": true,
+              "truckSpeedLimitFixationSpeedLimit": 81,
+              "truckSpeedLimitGeneralSpeedLimit": 60,
+              "truckSpeedLimitIsEnabled": true
+            },
+            "id": "zone0",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.579595458095554,
+                  0,
+                  0.2717062005392529
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2051.742218013397,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.51362454038136,
+                  0,
+                  -0.40599500657819104
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2261.8493908286605,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  74.38650405906024,
+                  0,
+                  -0.39739699433980274
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  74.5093685915727,
+                  0,
+                  0.8647605947291515
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "availableDirection": "Undefined",
+              "carSpeedLimitFixationSpeedLimit": 81,
+              "carSpeedLimitGeneralSpeedLimit": 60,
+              "carSpeedLimitIsEnabled": true,
+              "description": "",
+              "direction": "In",
+              "fixationSpeedLimit": 81,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 1,
+              "permittedDirection": "Undefined",
+              "rigSpeedLimitFixationSpeedLimit": 81,
+              "rigSpeedLimitGeneralSpeedLimit": 60,
+              "rigSpeedLimitIsEnabled": true,
+              "truckSpeedLimitFixationSpeedLimit": 81,
+              "truckSpeedLimitGeneralSpeedLimit": 60,
+              "truckSpeedLimitIsEnabled": true
+            },
+            "id": "zone1",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2048.0881802253057,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.513024989527214,
+                  0,
+                  -0.41215592792596056
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 133.37237926534104,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.198759852261798,
+                  0,
+                  -3.6404778673339653
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1770.381308330349,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  74.07173363907337,
+                  0,
+                  -3.630925667632899
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2258.195353040569,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  74.38416890155356,
+                  0,
+                  -0.4214381017648246
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "availableDirection": "Undefined",
+              "carSpeedLimitFixationSpeedLimit": 81,
+              "carSpeedLimitGeneralSpeedLimit": 60,
+              "carSpeedLimitIsEnabled": true,
+              "description": "",
+              "direction": "In",
+              "fixationSpeedLimit": 81,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 2,
+              "permittedDirection": "Undefined",
+              "rigSpeedLimitFixationSpeedLimit": 81,
+              "rigSpeedLimitGeneralSpeedLimit": 60,
+              "rigSpeedLimitIsEnabled": true,
+              "truckSpeedLimitFixationSpeedLimit": 81,
+              "truckSpeedLimitGeneralSpeedLimit": 60,
+              "truckSpeedLimitIsEnabled": true
+            },
+            "id": "zone2",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 129.7183414772495,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.198160301407647,
+                  0,
+                  -3.6466387886817344
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 2056
+                },
+                "point3D": [
+                  18.178369477732453,
+                  0,
+                  -3.8499491931581296
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 639.0763765541741
+                },
+                "point3D": [
+                  38.54009346496044,
+                  0,
+                  -8.076858773766503
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1094.384317533415,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  73.63877781350254,
+                  0,
+                  -8.078529715144905
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1766.7272705422574,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  74.06939848156668,
+                  0,
+                  -3.654966775057921
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "availableDirection": "Undefined",
+              "carSpeedLimitFixationSpeedLimit": 81,
+              "carSpeedLimitGeneralSpeedLimit": 60,
+              "carSpeedLimitIsEnabled": true,
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": false,
+              "kind": "TrafficLane",
+              "number": 0,
+              "permittedDirection": "Undefined",
+              "rigSpeedLimitFixationSpeedLimit": 81,
+              "rigSpeedLimitGeneralSpeedLimit": 60,
+              "rigSpeedLimitIsEnabled": true,
+              "truckSpeedLimitFixationSpeedLimit": 81,
+              "truckSpeedLimitGeneralSpeedLimit": 60,
+              "truckSpeedLimitIsEnabled": true
+            },
+            "id": "zone3",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 637.2504440497336
+                },
+                "point3D": [
+                  38.594820409281795,
+                  0,
+                  -8.088219962206438
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  72.94370716674196,
+                  0,
+                  -15.218736968142322
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1090.7302797453233,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  73.63643825003828,
+                  0,
+                  -8.102570822569927
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "view": {
+        "distorsion": {
+          "k1": 0,
+          "k2": 0,
+          "p1": 0,
+          "p2": 0
+        },
+        "fieldOfView": {
+          "x": 13.9,
+          "y": 10.5
+        },
+        "projectionMatrix": {
+          "m11": 9.080879,
+          "m12": 0,
+          "m13": 0,
+          "m14": 0,
+          "m21": 0,
+          "m22": 10.882921,
+          "m23": 0,
+          "m24": 0,
+          "m31": 0,
+          "m32": 0,
+          "m33": -1.000002,
+          "m34": -1,
+          "m41": 0,
+          "m42": 0,
+          "m43": -1.000002,
+          "m44": 0
+        },
+        "resolution": {
+          "height": 2056,
+          "width": 2464
+        }
+      }
+    }
+  },
+  "general": {
+    "enableRadarOnlyFixations": false,
+    "signs": {
+      "modification": "АТОМ ИС",
+      "serial": "2150201"
+    },
+    "timezone": 3,
+    "videoEncodingFormat": "H264",
+    "writeVideoForViolations": true
+  },
+  "realtimeVariables": {
+    "workmode": "Normal"
+  },
+  "system": {
+    "variables": {
+      "setupGeometry": {
+        "tutorialComplete": true
+      },
+      "setupMarking": {
+        "welcomeComplete": true
+      }
+    }
+  }
+}
