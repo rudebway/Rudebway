@@ -92,7 +92,7 @@
           },
           "focusConfig": {
             "isAutofocusEnabled": false,
-            "manualFocusValue": 20.75
+            "manualFocusValue": 29
           },
           "fType": "cameraautomatcs",
           "isEnabled": true
@@ -840,9 +840,12 @@
   "general": {
     "signs": {
       "modification": "АТОМ ИС",
-      "serial": "2014001"
+      "serial": "2A215201"
     },
     "timezone": 3
+  },
+  "realtimeVariables": {
+    "workmode": "Normal"
   },
   "system": {
     "variables": {
