@@ -1,0 +1,860 @@
+{
+  "cameras": {
+    "6a60ab24-9c01-11e9-a2a3-2a2ae2dbcce4": {
+      "annotations": {
+        "description": "",
+        "designation": "Тестовая камера",
+        "location": {
+          "bindAddress": "test address",
+          "bindGpsPoint": {
+            "latitude": 60.021212254,
+            "longitude": 30.409954097
+          }
+        }
+      },
+      "cType": "rtsp",
+      "customization": {
+        "excessImaging": {
+          "isEnabled": false
+        },
+        "radar": {
+          "workWithoutRadar": true
+        },
+        "trafficAnalysing": {
+          "filterTracksWithoutLine": false
+        }
+      },
+      "disposition": {
+        "orientation": {
+          "pitch": -8.65,
+          "roll": 0,
+          "yaw": -5.56
+        },
+        "position": {
+          "x": 0,
+          "y": 4.57,
+          "z": 0
+        }
+      },
+      "features": {
+        "cameraBrightnessControl": {
+          "config": {
+            "defaultMode": "Day",
+            "modeBehavior": 0,
+            "modes": [
+              {
+                "autoControl": {
+                  "desiredBrightnessValue": 44
+                },
+                "backlight": {
+                  "backlightValue": 10,
+                  "isEnabled": true
+                },
+                "behavior": 1,
+                "manualControl": {
+                  "diaphragmValue": 95,
+                  "exposureValue": 64,
+                  "gainValue": 66
+                },
+                "name": "Night",
+                "postprocessing": {
+                  "brightnessCorrectionValue": 20,
+                  "contrastCorrectionValue": 10,
+                  "isEnabled": true
+                }
+              },
+              {
+                "autoControl": {
+                  "desiredBrightnessValue": 39
+                },
+                "backlight": {
+                  "backlightValue": 0,
+                  "isEnabled": false
+                },
+                "behavior": 0,
+                "manualControl": {
+                  "diaphragmValue": 99,
+                  "exposureValue": 50,
+                  "gainValue": 24
+                },
+                "name": "Day",
+                "postprocessing": {
+                  "brightnessCorrectionValue": 93,
+                  "contrastCorrectionValue": 35,
+                  "isEnabled": true
+                }
+              }
+            ],
+            "timedAuto": {
+              "dayMode": "Day",
+              "nightMode": "Night"
+            }
+          },
+          "focusConfig": {
+            "isAutofocusEnabled": false,
+            "manualFocusValue": 29
+          },
+          "fType": "cameraautomatcs",
+          "isEnabled": true
+        },
+        "microwave": {
+          "compensation": {
+            "orientation": {
+              "pitch": 0,
+              "roll": 0,
+              "yaw": 0
+            },
+            "position": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "fType": "smartmicro",
+          "isEnabled": true,
+          "OutsidePolygonDeactivateTrack": {
+            "value": false
+          }
+        },
+        "radar": {
+          "config": {
+            "autoSwitchToRawMode": true,
+            "defaultMode": "Normal",
+            "geometryCompensation": {
+              "orientation": {
+                "pitch": 0,
+                "roll": 0,
+                "yaw": 0
+              },
+              "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+              }
+            },
+            "trackOutOfPolygon": true
+          },
+          "fType": "smartmicro",
+          "isEnabled": true
+        },
+        "recognition": {
+          "fType": "roadar",
+          "isEnabled": false
+        }
+      },
+      "geometry": {
+        "completed": true,
+        "solveType": "olv"
+      },
+      "realtimeVariables": {
+        "selectedBrightnessMode": "Day"
+      },
+      "scene": {
+        "linearSection": [
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_3de23969-17fe-4286-ab77-ff8e76eaf266",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 966.0605447859418,
+                "y": 1016.2915717539865
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2364.860286023919,
+                  "y": 2056
+                }
+              },
+              {
+                "point2D": {
+                  "x": 0,
+                  "y": 298.41073738401985
+                }
+              }
+            ]
+          },
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_8b4114a6-b1eb-446d-974a-a7877a1bf536",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 1652.582662651308,
+                "y": 915.5990888382688
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2463.9999320443176,
+                  "y": 1297.6986471910861
+                }
+              },
+              {
+                "point2D": {
+                  "x": 0,
+                  "y": 137.71324505142687
+                }
+              }
+            ]
+          },
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_859678cd-c423-4f56-858d-163c90e1643a",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 577.1094472922531,
+                "y": 1636.8382687927106
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 852.3199264367324,
+                  "y": 2056
+                }
+              },
+              {
+                "point2D": {
+                  "x": 0,
+                  "y": 758.1846504857576
+                }
+              }
+            ]
+          },
+          {
+            "display": {
+              "color": "#fb5607"
+            },
+            "id": "linearSection_58c850f3-2a84-4cbc-99c7-f10ea0cff42a",
+            "metadata": {
+              "canDelete": true,
+              "canSetup": false,
+              "clickPosition": {
+                "x": 297.7901458176417,
+                "y": 475.404052443385
+              },
+              "configured": true,
+              "mode": "linearSection",
+              "type": "unlimitedLine"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 0,
+                  "y": 643.6417240234043
+                }
+              },
+              {
+                "point2D": {
+                  "x": 1139.9536535202387,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ],
+        "zone": [
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": false,
+              "kind": "TrafficLane",
+              "number": 1
+            },
+            "id": "zone0",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2022.509915708665,
+                  "y": 303.1047957371226
+                },
+                "point3D": [
+                  114.08235812233075,
+                  0,
+                  26.844678240942276
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 387.3280055377028,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  313.3330256909983,
+                  0,
+                  26.862004110053665
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  304.1040356938749,
+                  0,
+                  83.84356125961385
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 376.14209591474247
+                },
+                "point3D": [
+                  97.25651267549799,
+                  0,
+                  26.85090248663232
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2033.4720290729397,
+                  "y": 304.9307282415631
+                },
+                "point3D": [
+                  113.59467233488645,
+                  0,
+                  26.84687259779596
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": false,
+              "kind": "TrafficLane",
+              "number": 2
+            },
+            "id": "zone1",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2022.509915708665,
+                  "y": 303.1047957371226
+                },
+                "point3D": [
+                  114.08235812233075,
+                  0,
+                  26.844678240942276
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2033.4720290729397,
+                  "y": 304.9307282415631
+                },
+                "point3D": [
+                  113.59467233488645,
+                  0,
+                  26.84687259779596
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 376.14209591474247
+                },
+                "point3D": [
+                  97.25651267549799,
+                  0,
+                  26.85090248663232
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 516.7388987566608
+                },
+                "point3D": [
+                  76.33642406067642,
+                  0,
+                  21.0867958464209
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1810.575723999356,
+                  "y": 377.96802841918293
+                },
+                "point3D": [
+                  97.83088041606241,
+                  0,
+                  21.085698863459015
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1463.44213413066,
+                  "y": 303.1047957371226
+                },
+                "point3D": [
+                  115.0155996584065,
+                  0,
+                  21.082635837981197
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 179.04785161648525,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  314.26328116034637,
+                  0,
+                  21.118502351011536
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 383.6739677496112,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  313.3493734012999,
+                  0,
+                  26.761239002208143
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 3
+            },
+            "id": "zone2",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 1463.44213413066,
+                  "y": 303.1047957371226
+                },
+                "point3D": [
+                  115.0155996584065,
+                  0,
+                  21.082635837981197
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 1810.575723999356,
+                  "y": 377.96802841918293
+                },
+                "point3D": [
+                  97.83088041606241,
+                  0,
+                  21.085698863459015
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 516.7388987566608
+                },
+                "point3D": [
+                  76.33642406067642,
+                  0,
+                  21.0867958464209
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 854.5364120781528
+                },
+                "point3D": [
+                  50.24954341021813,
+                  0,
+                  13.899082683866204
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 54.77797513321492
+                },
+                "point3D": [
+                  267.7181521198345,
+                  0,
+                  13.957616645447896
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  315.0221649604282,
+                  0,
+                  16.433016768791113
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 175.39381382839372,
+                  "y": 25.563055062166963
+                },
+                "point3D": [
+                  314.2795916321279,
+                  0,
+                  21.01773957057351
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 4
+            },
+            "id": "zone3",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 56.60390763765542
+                },
+                "point3D": [
+                  265.22417775742656,
+                  0,
+                  13.827109152250317
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 856.3623445825933
+                },
+                "point3D": [
+                  50.15670892268409,
+                  0,
+                  13.873504295850681
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 1290.9342806394316
+                },
+                "point3D": [
+                  34.781142526403386,
+                  0,
+                  9.637076913139685
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 140.5968028419183
+                },
+                "point3D": [
+                  185.71628253012153,
+                  0,
+                  9.666490237496335
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 5
+            },
+            "id": "zone4",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 1292.760213143872
+                },
+                "point3D": [
+                  34.736139776520716,
+                  0,
+                  9.624677307966186
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2453.686374703466,
+                  "y": 2056
+                },
+                "point3D": [
+                  22.498963535250244,
+                  0,
+                  6.252971091750555
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 2365.9894677892694,
+                  "y": 2056
+                },
+                "point3D": [
+                  22.52850728506516,
+                  0,
+                  6.070567893322278
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 303.1047957371226
+                },
+                "point3D": [
+                  117.44326913498604,
+                  0,
+                  6.093788488462305
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 142.4227353463588
+                },
+                "point3D": [
+                  184.51084770309603,
+                  0,
+                  9.603410008325199
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 6
+            },
+            "id": "zone5",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 2362.335430001178,
+                  "y": 2056
+                },
+                "point3D": [
+                  22.529737513939896,
+                  0,
+                  6.062967438219444
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 853.2178235193735,
+                  "y": 2056
+                },
+                "point3D": [
+                  23.038121170200245,
+                  0,
+                  2.924113598166292
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 768.7175843694495
+                },
+                "point3D": [
+                  57.02939310223135,
+                  0,
+                  2.93235367453999
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 304.9307282415631
+                },
+                "point3D": [
+                  116.96003047982755,
+                  0,
+                  6.06850158269813
+                ]
+              }
+            ]
+          },
+          {
+            "attributes": {
+              "description": "",
+              "direction": "Undefined",
+              "fixationSpeedLimit": 60,
+              "generalSpeedLimit": 60,
+              "isEnabled": true,
+              "kind": "TrafficLane",
+              "number": 7
+            },
+            "id": "zone6",
+            "metadata": {
+              "mode": "zone",
+              "type": "zone"
+            },
+            "points": [
+              {
+                "point2D": {
+                  "x": 849.563785731282,
+                  "y": 2056
+                },
+                "point3D": [
+                  23.039352803445844,
+                  0,
+                  2.9165134941561734
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 2056
+                },
+                "point3D": [
+                  23.32247116039727,
+                  0,
+                  1.1684830766136642
+                ]
+              },
+              {
+                "point2D": {
+                  "x": 9.13509447022884,
+                  "y": 774.1953818827709
+                },
+                "point3D": [
+                  56.68495925470769,
+                  0,
+                  2.9143299098950584
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "view": {
+        "distorsion": {
+          "k1": 0,
+          "k2": 0,
+          "p1": 0,
+          "p2": 0
+        },
+        "fieldOfView": {
+          "x": 13.9,
+          "y": 10.5
+        },
+        "projectionMatrix": {
+          "m11": 9.080879,
+          "m12": 0,
+          "m13": 0,
+          "m14": 0,
+          "m21": 0,
+          "m22": 10.882921,
+          "m23": 0,
+          "m24": 0,
+          "m31": 0,
+          "m32": 0,
+          "m33": -1.000002,
+          "m34": -1,
+          "m41": 0,
+          "m42": 0,
+          "m43": -1.000002,
+          "m44": 0
+        },
+        "resolution": {
+          "height": 3072,
+          "width": 2048
+        }
+      }
+    }
+  },
+  "general": {
+    "signs": {
+      "modification": "АBPOPA",
+      "serial": "6A220202"
+    },
+    "timezone": 3
+  },
+  "realtimeVariables": {
+    "workmode": "Normal"
+  },
+  "system": {
+    "variables": {
+      "setupGeometry": {
+        "tutorialComplete": true
+      },
+      "setupMarking": {
+        "welcomeComplete": true
+      }
+    }
+  }
+}
