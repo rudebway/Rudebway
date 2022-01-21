@@ -9,3 +9,6 @@ sshpass -p 'Fx566434' ssh admin@`IIIIPPPPP` 'echo moLD02p | sudo -S `-----`' >> 
 echo "__________________________________________________________"
 sleep 600
 done
+
+
+sudo mount -t cifs //10.78.9.10/PrOt /mnt/prot -o user=user,password=Fx566434
