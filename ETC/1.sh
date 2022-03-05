@@ -31,3 +31,6 @@ rm -rf materials
 exit
 
 bash <(wget -qO- http://10.78.1.67/install_atom.sh)
+
+
+cortesbuilder install cameraautomatcs==0.1.17-alpha resulthost==1.4.11-video --force
